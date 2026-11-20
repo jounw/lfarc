@@ -91,7 +91,7 @@ Output notes: `TOP1%` is the top contributor's commit share (a bus-factor signal
 ## Snapshots (for the web and other consumers)
 
 ```bash
-python3 snapshot.py                # pool 1000, second stage for the top 300, save up to 200 -> data/latest.json, data/history/YYYY-MM-DD.json
+python3 snapshot.py                # pool 2000, second stage for the top 300, save up to 200 -> data/latest.json, data/history/YYYY-MM-DD.json
 python3 snapshot.py --pool 50 --out /tmp/snap   # quick test
 ```
 

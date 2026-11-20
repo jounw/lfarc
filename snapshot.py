@@ -2,7 +2,7 @@
 """lfarc snapshot: run the pipeline at scale and save data/latest.json and data/history/YYYY-MM-DD.json.
 
 Web pages and other consumers read only these files instead of calling the API. Run periodically by cron (GitHub Actions).
-  python3 snapshot.py                     # default: pool 1000, second stage for the top 300, save up to 200
+  python3 snapshot.py                     # default: pool 2000, second stage for the top 300, save up to 200
   python3 snapshot.py --pool 50 --out /tmp/snap   # quick test
 """
 import json
@@ -44,7 +44,7 @@ def update_readme(path, table):
 
 def main():
     p = lfarc.make_parser()
-    p.set_defaults(pool=1000, enrich=300, top=200)
+    p.set_defaults(pool=2000, enrich=300, top=200)
     p.add_argument("--out", default="data", help="output folder (default: data)")
     p.add_argument("--readme", default="README.md", help="README to put the ranking table in (skipped if markers are missing; empty string disables)")
     p.add_argument("--readme-top", type=int, default=30, help="number of repos in the README table")
