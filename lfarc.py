@@ -19,7 +19,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 API = "https://api.github.com"
-SCORE_VERSION = 5  # Bump whenever the scoring formula or filters change (recorded in snapshots)
+SCORE_VERSION = 6  # Bump whenever the scoring formula or filters change (recorded in snapshots)
 
 
 def get_token():
@@ -35,7 +35,8 @@ def get_token():
 TOKEN = get_token()
 
 
-def api(path, params=None):
+def _get(path, params=None):
+    """GET a GitHub API path and return (parsed JSON, response headers)."""
     url = API + path + ("?" + urllib.parse.urlencode(params) if params else "")
     req = urllib.request.Request(url, headers={"Accept": "application/vnd.github+json", "User-Agent": "lfarc"})
     if TOKEN:
@@ -43,7 +44,7 @@ def api(path, params=None):
     for attempt in range(4):
         try:
             with urllib.request.urlopen(req, timeout=30) as r:
-                return json.load(r)
+                return json.load(r), r.headers
         except urllib.error.HTTPError as e:
             # On rate limit, wait until the reset time and retry (for unattended runs)
             limited = e.code in (403, 429) and (e.headers.get("X-RateLimit-Remaining") == "0" or e.headers.get("Retry-After"))
@@ -51,6 +52,17 @@ def api(path, params=None):
                 raise
             wait = int(e.headers.get("Retry-After") or max(0, int(e.headers.get("X-RateLimit-Reset", "0")) - time.time()) + 1)
             time.sleep(min(wait, 3700))
+
+
+def api(path, params=None):
+    return _get(path, params)[0]
+
+
+def api_count(path, params=None):
+    """Total number of items in a list endpoint, read from the Link header of a per_page=1 request (1 call)."""
+    data, headers = _get(path, {**(params or {}), "per_page": 1})
+    m = re.search(r'[?&]page=(\d+)>; rel="last"', headers.get("Link") or "")
+    return int(m.group(1)) if m else len(data)
 
 
 def star_buckets(lo, hi, n):
@@ -108,16 +120,25 @@ def search_repos(args, since):
 DOC_TOPICS = {"awesome", "awesome-list", "tutorial", "tutorials", "interview", "interview-questions", "cheatsheet",
               "cheat-sheet", "roadmap", "handbook", "books", "book", "curated-list", "resources", "learning-resources",
               "leetcode", "coding-interview", "internships", "jobs", "course", "courses", "free-programming-books",
-              "list", "lists", "collection", "documentation", "docs"}
+              "list", "lists", "collection", "documentation", "docs", "guide", "guides", "examples", "samples",
+              "dotfiles", "exercises"}
 DOC_NAME = re.compile(r"(^|[-_.])(awesome|tutorials?|handbook|cheat-?sheets?|roadmap|interview|internships?|jobs?|"
-                      r"books?|resources|courses?|leetcode|notes|lists?)([-_.\d]|$)", re.I)
+                      r"books?|resources|courses?|leetcode|notes|lists?|guides?|examples?|samples?|snippets|dotfiles|"
+                      r"exercises|challenges|katas?)([-_.\d]|$)", re.I)
 DOC_DESC = re.compile(r"curated list|list of |collection of |cheat ?sheet|roadmap|handbook|interview (question|prep)|"
-                      r"internship|tutorial|study (guide|notes)|learning resources", re.I)
+                      r"internship|tutorial|study (guide|notes)|learning resources|\bguide (to|for)\b|"
+                      r"\bexamples? (of|for)\b|\bexercises\b|\bmirror\b|(from|for) the book|\bbook\b.*\bsource code\b|"
+                      r"\bsource code\b.*\bbook\b", re.I)
 
 
 def is_docs_repo(r):
-    """Does this look like a docs / curated-list / tutorial repo rather than code to contribute to? (heuristic)"""
+    """Does this look like something you cannot usefully contribute code to? (heuristic)
+
+    Docs, curated lists, tutorials, guides, example/sample collections, dotfiles and read-only mirrors.
+    """
     if not r.get("language"):  # No code language -> usually docs/data
+        return True
+    if r.get("mirror_url"):
         return True
     if set(r.get("topics") or []) & DOC_TOPICS:
         return True
@@ -156,25 +177,41 @@ def is_bot(login):
 
 
 def recent_activity(full_name, since_iso, pages, until=None):
-    """Fetch up to pages*100 recent commits and compute contribution concentration (bots excluded).
+    """Sample up to pages*100 commits from the window and compute contribution concentration (bots excluded).
 
-    contributors: number of distinct contributors
+    The first request takes the latest 100 commits. If that page is full, the remaining requests are spread evenly
+    back through the window (the 100 commits before each cut-off) instead of taking the next-latest pages; otherwise
+    a very active repo would be judged on its last few days only.
+
+    contributors: number of distinct contributors in the sample
     eff:          effective contributors = 1/sum(commit share^2); one person doing 90% gives ~1.2
     top_share:    commit share of the top contributor
-    capped=True:  hit the fetch limit -> commit/contributor counts are lower bounds
+    capped=True:  the window holds more commits than were sampled -> commit/contributor counts are lower bounds
+    core:         logins with >= 40% of the sampled commits (dominant committers are maintainers even when
+                  GitHub does not label them as members; internal use only). The bar is high on purpose: in a
+                  small repo a successful outside contributor quickly reaches 10-30% of recent commits.
     """
-    counts, total, capped = {}, 0, False
+    fmt = "%Y-%m-%dT%H:%M:%SZ"
+    start = datetime.strptime(since_iso, fmt)
+    end = datetime.strptime(until, fmt) if until else datetime.now(timezone.utc).replace(tzinfo=None)
+    counts, seen, capped = {}, set(), False
     dom_commits, dom_authors = {}, {}
-    for page in range(1, pages + 1):
+    for k in range(pages):
+        params = {"since": since_iso, "per_page": 100}
+        if k:
+            params["until"] = (end - (end - start) * k / pages).strftime(fmt)
+        elif until:
+            params["until"] = until
         try:
-            commits = api(f"/repos/{full_name}/commits", {"since": since_iso, "per_page": 100, "page": page, **({"until": until} if until else {})})
+            commits = api(f"/repos/{full_name}/commits", params)
         except urllib.error.HTTPError:
-            if page == 1:
+            if k == 0:
                 return None
-            capped = True
             break
-        total += len(commits)
         for c in commits:
+            if c.get("sha") in seen:
+                continue
+            seen.add(c.get("sha"))
             login = (c.get("author") or {}).get("login") or (c.get("commit", {}).get("author") or {}).get("email")
             if login and not is_bot(login):
                 counts[login] = counts.get(login, 0) + 1
@@ -182,11 +219,11 @@ def recent_activity(full_name, since_iso, pages, until=None):
                 dom = email.rsplit("@", 1)[-1].lower() if "@" in email else ""
                 dom_commits[dom] = dom_commits.get(dom, 0) + 1
                 dom_authors.setdefault(dom, set()).add(login)
-        if len(commits) < 100:
-            break
-        capped = True if page == pages else capped
-    else:
-        pass
+        if len(commits) == 100:
+            capped = True
+        if k == 0 and len(commits) < 100:
+            break  # the whole window fit in one page
+    total = len(seen)
     n = sum(counts.values())
     eff = 1 / sum((v / n) ** 2 for v in counts.values()) if n else 0.0
     # Company-driven? One non-personal, non-university email domain covers 50%+ of commits, from 2+ distinct authors
@@ -200,7 +237,8 @@ def recent_activity(full_name, since_iso, pages, until=None):
     top_login = max(counts, key=counts.get) if counts else None
     return {"commits": total, "contributors": len(counts), "eff": round(eff, 1),
             "top_share": round(max(counts.values()) / n, 2) if n else 0.0, "capped": capped,
-            "corp_domain": corp_domain, "top_login": top_login if top_login and "@" not in top_login else None}
+            "corp_domain": corp_domain, "top_login": top_login if top_login and "@" not in top_login else None,
+            "core": sorted(k for k, v in counts.items() if "@" not in k and v / n >= 0.4)}
 
 
 INSIDER = {"OWNER", "MEMBER", "COLLABORATOR"}
@@ -214,75 +252,175 @@ def _norm(x):
     return re.sub(r"[^a-z0-9]", "", (x or "").lower())
 
 
-def is_company_run(owner, owner_type, top_login):
-    """Heuristic: is the repo run by a company that employs its main committer?
+def assess_owner(owner, owner_type, top_login):
+    """Classify the owning organization: {"company": bool, "academic": bool}. Users are neither.
 
-    Only organizations with a website (blog) are considered. True when either
-      - the top committer's profile company contains the owner org name (e.g. company "@serverless" on serverless/*), or
-      - the org's display name or description reads like a company (Inc, Labs, Ltd, GmbH, Solutions, ...; the singular "Lab" is left out because university labs use it),
-        unless it also looks academic (university, institute, research, ...).
+    company (only orgs with a website/blog are considered), true when either
+      - the org's display name or description reads like a company (Inc, Labs, Ltd, GmbH, Solutions, ...; the
+        singular "Lab" is left out because university labs use it) and does not also look academic, or
+      - the top committer's profile company contains the org name (e.g. company "@serverless" on serverless/*).
+    academic: the org's name or description mentions a university, institute, research, ...
     The API hides `is_verified` from non-members, so verified-org checks cannot work here.
     """
+    out = {"company": False, "academic": False}
     if owner_type != "Organization":
-        return False
+        return out
     try:
         org = api(f"/orgs/{owner}")
     except urllib.error.HTTPError:
-        return False
-    if not (org.get("blog") or "").strip():
-        return False
+        return out
     text = f"{org.get('name') or ''} {org.get('description') or ''}"
-    if COMPANY_NAME.search(text) and not ACADEMIC.search(text):  # "Lab" at a university is not a company
-        return True
-    if top_login and len(_norm(owner)) >= 4:
+    out["academic"] = bool(ACADEMIC.search(text))
+    if not (org.get("blog") or "").strip():
+        return out
+    if COMPANY_NAME.search(text) and not out["academic"]:
+        out["company"] = True
+    elif top_login and len(_norm(owner)) >= 4:
         try:
             company = _norm(api(f"/users/{top_login}").get("company"))
         except urllib.error.HTTPError:
-            return False
-        return bool(company) and _norm(owner) in company
-    return False
+            return out
+        out["company"] = bool(company) and _norm(owner) in company
+    return out
 
 
-def enrich(full_name):
-    """External-PR acceptance rate (merge ratio among recently closed outsider PRs) and the count of entry-level issues (help wanted / good first issue)."""
-    accept, ext_n, closed_n = None, 0, 0
+RESEARCH_TOPICS = {"research", "science", "scientific-computing", "scientific-machine-learning", "arxiv", "paper",
+                   "papers", "physics", "astrophysics", "astronomy", "biology", "chemistry", "genomics",
+                   "bioinformatics", "neuroscience", "mathematics", "symbolic-regression", "computational-biology",
+                   "computational-chemistry", "computational-physics", "climate", "materials-science"}
+RESEARCH_TEXT = re.compile(r"\b(research|scientific|arxiv|paper|academic|physics|astrophysics|astronomy|biology|"
+                           r"chemistry|genomics|bioinformatics|neuroscience)\b", re.I)
+RESEARCH_HOME = re.compile(r"arxiv\.org|doi\.org|\.edu(/|$|\.)|\.ac\.[a-z]{2}(/|$)", re.I)
+RESEARCH_BONUS = 1.05  # deliberately small: research projects get a slight nudge, not a different ranking
+
+
+def is_research(topics, description, homepage, academic_owner):
+    """Does this look like a research / scientific project? (heuristic used only for a small bonus)"""
+    return bool(academic_owner or set(topics or []) & RESEARCH_TOPICS or RESEARCH_TEXT.search(description or "")
+                or RESEARCH_HOME.search(homepage or ""))
+
+
+ACCEPT_PRIOR = 0.4        # assumed outsider acceptance when there is no evidence
+ACCEPT_PRIOR_WEIGHT = 3   # the prior counts as this many PRs
+
+
+def enrich(full_name, core, since_iso, limits=None):
+    """Second-stage signals for one repo, mostly from its pull requests.
+
+    accept:           merge ratio among recently closed outsider PRs. An outsider is not a bot, not an
+                      OWNER/MEMBER/COLLABORATOR and not a hidden maintainer (a dominant committer whose own PRs are
+                      nearly always merged; people whose org membership is private show up as plain contributors,
+                      which used to inflate this). Needs >= 3 PRs from >= 3 authors.
+    accept_est:       the same ratio shrunk toward the prior (ACCEPT_PRIOR) so that 0/3 or 3/3 is not taken at
+                      face value; equals the prior when there is not enough data. This is what the score uses.
+    crowd:            distinct outsider authors whose PRs were closed or merged inside the recent window: how many
+                      other people are already contributing (competition).
+    pr_authors:       distinct authors of PRs merged inside the window (informational).
+    open_prs:         open pull requests opened by humans (review backlog); bot PRs such as dependency bumps are not counted.
+    contributors_all: all-time contributors.
+    merged_recent:    human PRs merged inside the window (at most 200 are looked at).
+    reason:           why the repo should be dropped ("backlog", "crowded", "closed"), or None.
+    limits = (max_open_prs, max_all_contributors); None disables the red-ocean checks.
+    """
+    x = {"accept": None, "accept_est": ACCEPT_PRIOR, "ext_prs": 0, "ext_authors": 0, "closed_prs": 0, "crowd": 0, "pr_authors": 0,
+         "merged_recent": 0, "open_prs": None, "contributors_all": None, "entry": 0, "reason": None}
+    core = {c.lower() for c in core or []}
+    closed = []
     try:
-        prs = api(f"/repos/{full_name}/pulls", {"state": "closed", "sort": "updated", "direction": "desc", "per_page": 50})
-        ext = [p for p in prs if p.get("author_association") not in INSIDER and (p.get("user") or {}).get("type") != "Bot"]
-        ext_n, closed_n = len(ext), len(prs)
-        if ext_n >= 3:
-            accept = sum(1 for p in ext if p.get("merged_at")) / ext_n
+        for page in (1, 2):
+            batch = api(f"/repos/{full_name}/pulls", {"state": "closed", "sort": "updated", "direction": "desc",
+                                                       "per_page": 100, "page": page})
+            closed += batch
+            if len(batch) < 100:
+                break
     except urllib.error.HTTPError:
         pass
-    entry = 0
+    login = lambda p: ((p.get("user") or {}).get("login") or "").lower()
+    is_human = lambda p: (p.get("user") or {}).get("type") != "Bot" and login(p) and not is_bot(login(p))
+    human = [p for p in closed if is_human(p)]
+    # A dominant committer counts as a maintainer only if their own PRs are (almost) always merged; an outside
+    # contributor who happens to author much of a small repo's recent commits still gets PRs rejected.
+    stats = {}
+    for p in human:
+        if login(p) in core:
+            n_closed, n_merged = stats.get(login(p), (0, 0))
+            stats[login(p)] = (n_closed + 1, n_merged + bool(p.get("merged_at")))
+    core = {l for l, (n_closed, n_merged) in stats.items() if n_closed >= 5 and n_merged / n_closed >= 0.8}
+    ext = [p for p in human if p.get("author_association") not in INSIDER and login(p) not in core]
+    x["closed_prs"], x["ext_prs"], x["ext_authors"] = len(human), len(ext), len({login(p) for p in ext})
+    if x["ext_prs"] >= 3 and x["ext_authors"] >= 3:
+        merged_ext = sum(1 for p in ext if p.get("merged_at"))
+        x["accept"] = merged_ext / x["ext_prs"]
+        x["accept_est"] = (merged_ext + ACCEPT_PRIOR * ACCEPT_PRIOR_WEIGHT) / (x["ext_prs"] + ACCEPT_PRIOR_WEIGHT)
+    # ISO-8601 UTC strings compare chronologically
+    x["crowd"] = len({login(p) for p in ext if (p.get("closed_at") or "") >= since_iso})
+    merged_recent = [p for p in human if (p.get("merged_at") or "") >= since_iso]
+    x["pr_authors"], x["merged_recent"] = len({login(p) for p in merged_recent}), len(merged_recent)
+    try:
+        opened = api(f"/repos/{full_name}/pulls", {"state": "open", "per_page": 100})
+        mine = sum(1 for p in opened if is_human(p))
+        if len(opened) < 100:
+            x["open_prs"] = mine
+        else:  # more than one page: scale the total by the human share of the first page
+            x["open_prs"] = round(api_count(f"/repos/{full_name}/pulls", {"state": "open"}) * mine / 100)
+    except urllib.error.HTTPError:
+        pass
+    try:
+        x["contributors_all"] = api_count(f"/repos/{full_name}/contributors", {"anon": "true"})
+    except urllib.error.HTTPError:
+        pass  # GitHub refuses to list contributors for a few very large repos
+
+    if limits:
+        max_open, max_all = limits
+        # Backlog: many open PRs AND more of them than were merged in the whole window (a queue of 3+ months).
+        # A popular repo that merges faster than PRs pile up is not a backlog, however many are open.
+        if x["open_prs"] is not None and x["open_prs"] > max_open and x["open_prs"] > x["merged_recent"]:
+            x["reason"] = "backlog"
+        elif x["contributors_all"] is not None and x["contributors_all"] > max_all:
+            x["reason"] = "crowded"
+        elif is_closed_project(x):
+            x["reason"] = "closed"
+        if x["reason"]:
+            return x  # skip the remaining calls for repos that are dropped anyway
+
     for label in ("help wanted", "good first issue"):
         try:
             items = api(f"/repos/{full_name}/issues", {"labels": label, "state": "open", "per_page": 100})
-            entry += sum(1 for x in items if "pull_request" not in x)
+            x["entry"] += sum(1 for i in items if "pull_request" not in i)
         except urllib.error.HTTPError:
             pass
-    return {"accept": accept, "ext_prs": ext_n, "closed_prs": closed_n, "entry": entry}
+    return x
 
 
 def is_closed_project(x):
-    """Outsiders effectively cannot contribute: 90%+ of recently closed PRs are from insiders, or the outsider PR acceptance rate is below 20%."""
-    if x["closed_prs"] >= 10 and x["ext_prs"] / x["closed_prs"] < 0.1:
+    """Outsiders effectively cannot contribute.
+
+    Either under 20% of at least 5 outsider PRs got merged, or there are plenty of closed PRs (>= 20) but fewer
+    than two distinct outsider authors among them, i.e. the PR flow is the maintainers' own.
+    """
+    if x["accept"] is not None and x["ext_prs"] >= 5 and x["accept"] < 0.2:
         return True
-    return x["accept"] is not None and x["accept"] < 0.2
+    return x["closed_prs"] >= 20 and x["ext_authors"] < 2
+
+
+def crowd_factor(n):
+    """Penalty for competition: 1.0 up to 5 recent outsider PR authors, then 1/(1+(n-5)/20) (25 -> 0.5, 45 -> 0.33)."""
+    return 1 / (1 + max(0, n - 5) / 20)
 
 
 def final_score(base, extra):
-    """base x acceptance factor (0.25-1.0) x entry-issue bonus (up to +10%).
+    """base x acceptance factor (0.25-1.0) x crowd factor x entry-issue bonus (up to +10%) x research bonus (+5%).
 
-    factor = 0.25 + 0.75 * acceptance rate. With fewer than 3 outsider PRs (not enough data) the rate is
-    conservatively taken as 0.4.
+    factor = 0.25 + 0.75 * acceptance, where acceptance is the outsider merge ratio shrunk toward 0.4
+    (small samples move it little; with fewer than 3 PRs or 3 authors it is exactly 0.4).
     (tune.py backtest: past acceptance was the best predictor of future acceptance, and the top
      of a scarcity-only ranking was actually accepted less often -> the factor is kept strong)
     """
-    acc = 0.4 if extra["accept"] is None else extra["accept"]
+    acc = extra["accept_est"] if "accept_est" in extra else (ACCEPT_PRIOR if extra["accept"] is None else extra["accept"])
     accept_factor = 0.25 + 0.75 * acc
     entry_bonus = 1 + 0.1 * min(1.0, extra["entry"] / 5)
-    return round(base * accept_factor * entry_bonus, 1)
+    research_bonus = RESEARCH_BONUS if extra.get("research") else 1.0
+    return round(base * accept_factor * crowd_factor(extra.get("crowd", 0)) * entry_bonus * research_bonus, 1)
 
 
 def clamp(x):
@@ -340,11 +478,15 @@ def make_parser():
     p.add_argument("--pages", type=int, default=3, help="commit pages fetched per repo (100 commits/page, default 3)")
     p.add_argument("--min-commits", type=int, default=5,
                    help="exclude repos with fewer commits than this in the recent window, as effectively dead (default 5)")
+    p.add_argument("--max-open-prs", type=int, default=50,
+                   help="exclude repos with more open (human) PRs than this when that also exceeds the PRs merged in the window: a review backlog (default 50)")
+    p.add_argument("--max-all-contributors", type=int, default=1000,
+                   help="exclude repos with more all-time contributors than this, as crowded (default 1000)")
     p.add_argument("--include-closed", action="store_true",
-                   help="also include corporate (known company / company email / company-run) repos and repos closed to outside contributions")
+                   help="also include corporate repos, repos closed to outside contributions, and crowded / backlogged repos")
     p.add_argument("--include-docs", action="store_true", help="also include docs / curated-list / tutorial repos")
     p.add_argument("--enrich", type=int, default=40,
-                   help="re-score the top N by base score after also fetching PR acceptance and entry-level issues (default 40)")
+                   help="re-score the top N by base score with the second-stage (pull request) signals (default 40)")
     p.add_argument("-n", "--top", type=int, default=20, help="number of results to print")
     p.add_argument("--json", action="store_true")
     return p
@@ -386,29 +528,47 @@ def run(args):
                      f"contributors_{args.days}d": a["contributors"], "effective_contributors": a["eff"], "top_share": a["top_share"], "capped": a["capped"], "language": r["language"],
                      "url": r["html_url"], "description": (r.get("description") or "")[:200],
                      "breakdown": parts, "base_score": s,
-                     "_owner": r["owner"]["login"], "_owner_type": r["owner"]["type"], "_top": a["top_login"]})
+                     "_owner": r["owner"]["login"], "_owner_type": r["owner"]["type"], "_top": a["top_login"],
+                     "_core": a["core"], "_topics": r.get("topics") or [], "_homepage": r.get("homepage") or ""})
     if n_corp:
         print(f"Excluded {n_corp} repos whose commit authors concentrate on one company email domain", file=sys.stderr)
     rows.sort(key=lambda x: x["score"], reverse=True)
     head = rows[: max(args.enrich, args.top)]
-    print(f"Fetching PR acceptance and entry-level issues for the top {len(head)}...", file=sys.stderr)
+    print(f"Second stage (pull requests, contributors, owner) for the top {len(head)}...", file=sys.stderr)
+    limits = None if args.include_closed else (args.max_open_prs, args.max_all_contributors)
+    ckey = f"commits_{args.days}d"
+
+    def stage2(r):
+        x = enrich(r["repo"], r["_core"], since_iso, limits)
+        owner = {"company": False, "academic": False} if x["reason"] else assess_owner(r["_owner"], r["_owner_type"], r["_top"])
+        return x, owner
+
     with ThreadPoolExecutor(max_workers=8) as ex:
-        extras = list(ex.map(lambda r: enrich(r["repo"]), head))
-        company = list(ex.map(lambda r: is_company_run(r["_owner"], r["_owner_type"], r["_top"]), head)) \
-            if not args.include_closed else [False] * len(head)
-    for r, x in zip(head, extras):
-        r["accept"], r["external_prs"], r["entry_issues"] = x["accept"], x["ext_prs"], x["entry"]
-        r["score"] = final_score(r["base_score"], x)
-    if not args.include_closed:
-        n0 = len(head)
-        kept = [(r, x) for r, x, c in zip(head, extras, company) if not is_closed_project(x) and not c]
-        print(f"Excluded {n0 - len(kept)} repos closed to outsiders or run by a company", file=sys.stderr)
-        head = [r for r, _ in kept]
-    for r in head:  # internal keys are not part of the output
-        for k in ("_owner", "_owner_type", "_top"):
-            r.pop(k, None)
-    rows = sorted(head, key=lambda x: x["score"], reverse=True)[: args.top]
-    return rows
+        results = list(ex.map(stage2, head))
+
+    kept, dropped = [], {}
+    for r, (x, owner) in zip(head, results):
+        reason = x["reason"] or ("company" if owner["company"] and not args.include_closed else None)
+        eff = r["effective_contributors"]
+        if reason:
+            dropped[reason] = dropped.get(reason, 0) + 1
+            continue
+        # open_issues_count from the API includes open PRs; subtract them to get real issues
+        issues = max(0, r["open_issues"] - x["open_prs"]) if x["open_prs"] is not None else r["open_issues"]
+        base, parts = score({"stargazers_count": r["stars"], "open_issues_count": issues}, {"commits": r[ckey], "eff": eff})
+        x["research"] = is_research(r["_topics"], r["description"], r["_homepage"], owner["academic"])
+        r.update({"open_issues": issues, "open_prs": x["open_prs"], "contributors_all": x["contributors_all"],
+                  "merged_pr_authors": x["pr_authors"], "outsider_pr_authors": x["crowd"],
+                  "accept": x["accept"], "external_prs": x["ext_prs"],
+                  "entry_issues": x["entry"], "research": x["research"], "breakdown": parts, "base_score": base,
+                  "score": final_score(base, x)})
+        kept.append(r)
+    if dropped:
+        print("Excluded in the second stage: " + ", ".join(f"{v} {k}" for k, v in sorted(dropped.items())), file=sys.stderr)
+    for r in kept:  # internal keys are not part of the output
+        for k in [k for k in r if k.startswith("_")]:
+            del r[k]
+    return sorted(kept, key=lambda x: x["score"], reverse=True)[: args.top]
 
 
 def main():
@@ -419,21 +579,24 @@ def main():
         print(json.dumps(rows, ensure_ascii=False, indent=2))
         return
     d = args.days
-    print(f"\n{'#':>2} {'SCORE':>5}  {'REPO':<38} {'★':>7} {'ISSUES':>6} {f'COMMIT/{d}d':>10} {'CONTRIB':>7} {'EFF':>5} {'TOP1%':>5} {'★/EFF':>7} {'ISS/EFF':>7} {'ACCEPT':>6} {'HW/GFI':>6}  LANG")
+    show = lambda v: "?" if v is None else str(v)
+    print(f"\n{'#':>2} {'SCORE':>5}  {'REPO':<38} {'★':>7} {'ISSUES':>6} {'OPEN_PR':>7} {'ALL_CONTRIB':>11} {'CROWD':>5} {f'COMMIT/{d}d':>10} "
+          f"{'EFF':>5} {'TOP1%':>5} {'ACCEPT':>6} {'HW/GFI':>6}  LANG")
     for i, r in enumerate(rows, 1):
         plus = "+" if r["capped"] else ""
-        b = r["breakdown"]
-        print(f"{i:>2} {r['score']:>5}  {r['repo']:<38} {r['stars']:>7} {r['open_issues']:>6} "
-              f"{str(r[f'commits_{d}d']) + plus:>10} {r[f'contributors_{d}d']:>7} {r['effective_contributors']:>5} "
-              f"{round(r['top_share'] * 100):>5} {b['stars_per']:>7} {b['issues_per']:>7} "
+        print(f"{i:>2} {r['score']:>5}  {r['repo'] + (' [research]' if r['research'] else ''):<38} {r['stars']:>7} {r['open_issues']:>6} "
+              f"{show(r['open_prs']):>7} {show(r['contributors_all']):>11} {r['outsider_pr_authors']:>5} {str(r[f'commits_{d}d']) + plus:>10} "
+              f"{r['effective_contributors']:>5} {round(r['top_share'] * 100):>5} "
               f"{(str(round(r['accept'] * 100)) + '%') if r['accept'] is not None else '?':>6} {r['entry_issues']:>6}  {r['language'] or '-'}")
     print(f"\nScore = scarcity(1/(1+(EFF-1)/2.5)) x (0.4 + 0.4*popularity(stars) + 0.2*issue demand) x outsider-PR acceptance factor "
-          f"(ACCEPT; '?' = not enough data, taken as 0.4) x entry-issue bonus (HW/GFI = help wanted + good first issue count). "
-          f"EFF = effective contributors (commit distribution over the last {d} days; one person doing everything ~ 1), "
-          f"TOP1% = commit share of the top contributor. '+' = lower bound (hit the fetch limit of {args.pages * 100} commits). "
-          f"Excluded: EFF > {args.max_contributors:g}, fewer than {args.min_commits} commits, docs/curated lists, "
-          f"corporate repos (known company list / company email domain / company-run org), and repos closed to outside contributions.\n")
-
+          f"(ACCEPT, shrunk toward 0.4 for small samples; '?' = not enough outsider PRs/authors) x crowd factor (CROWD = outsider PR authors in the last {d} days; "
+          f"no penalty up to 5) x entry-issue bonus (HW/GFI) x research bonus (+5%). "
+          f"EFF = effective contributors from a commit sample spread over the last {d} days, "
+          f"TOP1% = commit share of the top contributor, ISSUES excludes pull requests, OPEN_PR excludes bots. "
+          f"'+' = lower bound (the window holds more than the {args.pages * 100} sampled commits). "
+          f"Excluded: EFF > {args.max_contributors:g}, fewer than {args.min_commits} commits, docs/guides/examples/mirrors, corporate repos, "
+          f"repos closed to outsiders, PR backlogs (more than {args.max_open_prs} open PRs and more open than merged in {d} days), "
+          f"more than {args.max_all_contributors} all-time contributors.\n")
 
 if __name__ == "__main__":
     main()

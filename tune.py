@@ -74,8 +74,7 @@ def collect(args):
                                language=None, topic=None)
     repos = lfarc.search_repos(sa, (now - timedelta(days=args.days)).strftime("%Y-%m-%d"))
     repos = [r for r in repos if not lfarc.is_docs_repo(r)]
-    corp = lfarc.verified_orgs(repos)
-    repos = [r for r in repos if r["owner"]["login"] not in corp]
+    repos = [r for r in repos if r["owner"]["login"].lower() not in lfarc.CORP_ORGS]
     print(f"Collecting {len(repos)} repos...")
     with ThreadPoolExecutor(max_workers=8) as ex:
         rows = [x for x in ex.map(lambda r: collect_one(r, now, args.days), repos) if x]

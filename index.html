@@ -48,6 +48,7 @@
   .bar { width: 48px; height: 6px; border-radius: 1px; background: var(--line); overflow: hidden; }
   .bar > i { display: block; height: 100%; background: var(--accent); }
   .muted { color: var(--muted); }
+  .tag { margin-left: 8px; padding: 0 5px; border: 1px solid var(--line); border-radius: 2px; font-size: 11px; color: var(--muted); }
   .desc { font-size: 12px; font-weight: 400; color: var(--muted); max-width: 440px; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
   .state { padding: 40px 16px; text-align: center; color: var(--muted); }
   .state.error { color: var(--warn); }
@@ -100,8 +101,9 @@
       <li><b>Scarcity</b> <code>1 / (1 + (EFF − 1) / 2.5)</code> multiplies everything, so many contributors means a low score no matter how many stars.</li>
       <li><b>Base</b> <code>100 × scarcity × (0.4 + 0.4 × popularity + 0.2 × demand)</code>, where popularity and demand are smoothly saturating functions of stars and issues per effective contributor.</li>
       <li><b>Outsider PR acceptance</b> scales the score by <code>0.25 + 0.75 × acceptance</code>. In a backtest, past acceptance was the best predictor of future acceptance.</li>
-      <li><b>Entry issues</b> (<code>help wanted</code> + <code>good first issue</code>): 5 or more gives a +10% bonus.</li>
-      <li>Excluded: dead repos, docs and curated lists, known companies, verified organizations, company-driven repos, and repos closed to outsiders.</li>
+      <li><b>Crowding</b>: more than 5 outsider PR authors in the recent window lowers the score (25 authors halve it), because many people are already contributing.</li>
+      <li><b>Entry issues</b> (<code>help wanted</code> + <code>good first issue</code>): 5 or more gives a +10% bonus. Research projects get a small +5%.</li>
+      <li>Excluded: dead repos, docs / guides / example collections, company-run repos, repos closed to outsiders, PR backlogs (more than 50 open PRs and more open than merged in the window), and repos with more than 1,000 all-time contributors.</li>
     </ul>
     <p>These are heuristics and can be wrong. Treat the ranking as a starting point, not a verdict.</p>
   </details>
@@ -122,6 +124,7 @@ const COLS = [
   { key: "eff",   label: "Eff. contrib.", num: true },
   { key: "top",   label: "Top 1 share",   num: true },
   { key: "acc",   label: "PR accepted",   num: true },
+  { key: "prs",   label: "Open PRs",  num: true },
   { key: "entry", label: "HW/GFI",    num: true },
   { key: "lang",  label: "Language",  num: false },
 ];
@@ -142,7 +145,7 @@ function normalize(doc) {
   return (doc.repos || []).map((r) => ({
     repo: r.repo, url: r.url, score: r.score, stars: r.stars,
     eff: r.effective_contributors, top: r.top_share,
-    desc: r.description || "", acc: r.accept ?? null, entry: r.entry_issues ?? 0, lang: r.language || "",
+    desc: r.description || "", acc: r.accept ?? null, prs: r.open_prs ?? null, research: !!r.research, entry: r.entry_issues ?? 0, lang: r.language || "",
     commits: r[`commits_${days}d`], capped: !!r.capped,
   }));
 }
@@ -181,12 +184,13 @@ function render() {
     const score = el("span", { className: "score" }, bar, el("span", { textContent: r.score.toFixed(1) }));
     const cells = [
       el("td", { className: "muted", textContent: String(i + 1) }),
-      el("td", {}, nameCell, ...(r.desc ? [el("div", { className: "desc", textContent: r.desc, title: r.desc })] : [])),
+      el("td", {}, nameCell, ...(r.research ? [el("span", { className: "tag", textContent: "research" })] : []), ...(r.desc ? [el("div", { className: "desc", textContent: r.desc, title: r.desc })] : [])),
       el("td", {}, score),
       el("td", { textContent: r.stars.toLocaleString() }),
       el("td", { textContent: String(r.eff) }),
       el("td", { textContent: `${Math.round(r.top * 100)}%` }),
       el("td", { textContent: r.acc === null ? "?" : `${Math.round(r.acc * 100)}%`, className: r.acc === null ? "muted" : "" }),
+      el("td", { textContent: r.prs === null ? "–" : String(r.prs), className: r.prs === null ? "muted" : "" }),
       el("td", { textContent: String(r.entry) }),
       el("td", { textContent: r.lang || "-", className: r.lang ? "" : "muted" }),
     ];
