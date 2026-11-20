@@ -362,7 +362,8 @@ def run(args):
         rows.append({"repo": r["full_name"], "score": s, "stars": r["stargazers_count"], "forks": r["forks_count"],
                      "open_issues": r["open_issues_count"], f"commits_{args.days}d": a["commits"],
                      f"contributors_{args.days}d": a["contributors"], "effective_contributors": a["eff"], "top_share": a["top_share"], "capped": a["capped"], "language": r["language"],
-                     "url": r["html_url"], "breakdown": parts, "base_score": s})
+                     "url": r["html_url"], "description": (r.get("description") or "")[:200],
+                     "breakdown": parts, "base_score": s})
     if n_corp:
         print(f"Excluded {n_corp} repos whose commit authors concentrate on one company email domain", file=sys.stderr)
     rows.sort(key=lambda x: x["score"], reverse=True)

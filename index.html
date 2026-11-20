@@ -48,6 +48,7 @@
   .bar { width: 48px; height: 6px; border-radius: 1px; background: var(--line); overflow: hidden; }
   .bar > i { display: block; height: 100%; background: var(--accent); }
   .muted { color: var(--muted); }
+  .desc { font-size: 12px; font-weight: 400; color: var(--muted); max-width: 440px; overflow: hidden; text-overflow: ellipsis; margin-top: 1px; }
   .state { padding: 40px 16px; text-align: center; color: var(--muted); }
   .state.error { color: var(--warn); }
   details { margin-top: 28px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); padding: 4px 16px; }
@@ -141,7 +142,7 @@ function normalize(doc) {
   return (doc.repos || []).map((r) => ({
     repo: r.repo, url: r.url, score: r.score, stars: r.stars,
     eff: r.effective_contributors, top: r.top_share,
-    acc: r.accept ?? null, entry: r.entry_issues ?? 0, lang: r.language || "",
+    desc: r.description || "", acc: r.accept ?? null, entry: r.entry_issues ?? 0, lang: r.language || "",
     commits: r[`commits_${days}d`], capped: !!r.capped,
   }));
 }
@@ -180,7 +181,7 @@ function render() {
     const score = el("span", { className: "score" }, bar, el("span", { textContent: r.score.toFixed(1) }));
     const cells = [
       el("td", { className: "muted", textContent: String(i + 1) }),
-      el("td", {}, nameCell),
+      el("td", {}, nameCell, ...(r.desc ? [el("div", { className: "desc", textContent: r.desc, title: r.desc })] : [])),
       el("td", {}, score),
       el("td", { textContent: r.stars.toLocaleString() }),
       el("td", { textContent: String(r.eff) }),

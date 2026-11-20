@@ -41,7 +41,8 @@
    "base_score": 79.9,
    "accept": 0.9795918367346939,
    "external_prs": 49,
-   "entry_issues": 4
+   "entry_issues": 4,
+   "description": "Run frontier AI locally."
   },
   {
    "repo": "rvm/rvm",
@@ -63,7 +64,8 @@
    "base_score": 70.9,
    "accept": 0.86,
    "external_prs": 50,
-   "entry_issues": 7
+   "entry_issues": 7,
+   "description": "Ruby enVironment Manager (RVM)"
   },
   {
    "repo": "twpayne/chezmoi",
@@ -85,7 +87,8 @@
    "base_score": 68.2,
    "accept": 1.0,
    "external_prs": 9,
-   "entry_issues": 1
+   "entry_issues": 1,
+   "description": "Manage your dotfiles across multiple diverse machines, securely."
   },
   {
    "repo": "serverless/serverless",
@@ -107,7 +110,8 @@
    "base_score": 71.9,
    "accept": 0.8333333333333334,
    "external_prs": 24,
-   "entry_issues": 131
+   "entry_issues": 131,
+   "description": "⚡ Serverless Framework – Effortlessly build apps that auto-scale, incur zero costs when idle, and require minimal maintenance using AWS Lambda and other managed cloud services."
   },
   {
    "repo": "bee-san/Ciphey",
@@ -129,7 +133,8 @@
    "base_score": 68.7,
    "accept": 1.0,
    "external_prs": 7,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "⚡ Automatically decrypt encryptions without knowing the key or cipher, decode encodings, and crack hashes ⚡"
   },
   {
    "repo": "reactive-resume/reactive-resume",
@@ -151,7 +156,8 @@
    "base_score": 68.4,
    "accept": 1.0,
    "external_prs": 19,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today!"
   },
   {
    "repo": "tesseract-ocr/tesseract",
@@ -173,7 +179,8 @@
    "base_score": 65.2,
    "accept": 0.9230769230769231,
    "external_prs": 13,
-   "entry_issues": 6
+   "entry_issues": 6,
+   "description": "Tesseract Open Source OCR Engine (main repository)"
   },
   {
    "repo": "dockur/macos",
@@ -195,7 +202,8 @@
    "base_score": 70.0,
    "accept": 0.9523809523809523,
    "external_prs": 42,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "macOS inside a Docker container."
   },
   {
    "repo": "mautic/mautic",
@@ -217,7 +225,8 @@
    "base_score": 65.8,
    "accept": 0.9565217391304348,
    "external_prs": 46,
-   "entry_issues": 3
+   "entry_issues": 3,
+   "description": "Mautic: Open Source Marketing Automation Software."
   },
   {
    "repo": "codewhale-hq/Codewhale",
@@ -239,7 +248,8 @@
    "base_score": 71.4,
    "accept": 0.8,
    "external_prs": 10,
-   "entry_issues": 18
+   "entry_issues": 18,
+   "description": "An open-source coding agent for your terminal, written in Rust. It works with any model, can split one task across several agents, and every line of it is yours to read."
   },
   {
    "repo": "stenzek/duckstation",
@@ -261,7 +271,8 @@
    "base_score": 68.8,
    "accept": 0.9591836734693877,
    "external_prs": 49,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Fast PlayStation 1 emulator for x86-64/AArch32/AArch64/RV64"
   },
   {
    "repo": "GyulyVGC/sniffnet",
@@ -283,7 +294,8 @@
    "base_score": 70.5,
    "accept": 0.7894736842105263,
    "external_prs": 19,
-   "entry_issues": 20
+   "entry_issues": 20,
+   "description": "Comfortably monitor your network traffic 🕵️‍♂️"
   },
   {
    "repo": "fastlane/fastlane",
@@ -305,7 +317,8 @@
    "base_score": 64.0,
    "accept": 1.0,
    "external_prs": 9,
-   "entry_issues": 1
+   "entry_issues": 1,
+   "description": "🚀 The easiest way to automate building and releasing your iOS and Android apps"
   },
   {
    "repo": "MobSF/Mobile-Security-Framework-MobSF",
@@ -327,7 +340,8 @@
    "base_score": 63.8,
    "accept": 1.0,
    "external_prs": 7,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Mobile Security Framework (MobSF) is an automated, all-in-one mobile application (Android/iOS/Windows) pen-testing, malware analysis and security assessment framework capable of performing static and "
   },
   {
    "repo": "RustPython/RustPython",
@@ -349,7 +363,8 @@
    "base_score": 63.6,
    "accept": 0.9777777777777777,
    "external_prs": 45,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "A Python Interpreter written in Rust"
   },
   {
    "repo": "git-bug/git-bug",
@@ -371,7 +386,8 @@
    "base_score": 69.7,
    "accept": 0.8536585365853658,
    "external_prs": 41,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Distributed, offline-first bug tracker integrated in git"
   },
   {
    "repo": "ChatGPTNextWeb/NextChat",
@@ -393,7 +409,8 @@
    "base_score": 76.1,
    "accept": 0.6521739130434783,
    "external_prs": 46,
-   "entry_issues": 23
+   "entry_issues": 23,
+   "description": "✨ Zero-config AI chat assistant. No API key needed — sign up and instantly chat with GPT-5, Claude 4, Gemini 2.5, DeepSeek & 100+ top models. Pay-as-you-go saves you more. Available on Web, iOS, macOS"
   },
   {
    "repo": "usablica/intro.js",
@@ -415,7 +432,8 @@
    "base_score": 73.8,
    "accept": 0.7560975609756098,
    "external_prs": 41,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Lightweight, user-friendly onboarding tour library"
   },
   {
    "repo": "dashingsoft/pyarmor",
@@ -437,7 +455,8 @@
    "base_score": 62.0,
    "accept": 0.9387755102040817,
    "external_prs": 49,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "A tool used to obfuscate python scripts, bind obfuscated scripts to fixed machine or expire obfuscated scripts."
   },
   {
    "repo": "hatoo/oha",
@@ -459,7 +478,8 @@
    "base_score": 60.8,
    "accept": 0.9285714285714286,
    "external_prs": 14,
-   "entry_issues": 1
+   "entry_issues": 1,
+   "description": "Ohayou(おはよう), HTTP load generator, inspired by rakyll/hey with tui animation."
   },
   {
    "repo": "cheaper-inference/OmniRoute",
@@ -481,7 +501,8 @@
    "base_score": 76.1,
    "accept": 0.6,
    "external_prs": 20,
-   "entry_issues": 5
+   "entry_issues": 5,
+   "description": "Never stop coding. Free MIT AI gateway: one endpoint, 375 providers (150+ free), 1,400+ models Kimi, Claude, GPT, Gemini, GLM, DeepSeek, MiniMax. Works with Claude Code, Codex, Cursor, OpenCode, Cline"
   },
   {
    "repo": "unlayer/react-email-editor",
@@ -503,7 +524,8 @@
    "base_score": 64.6,
    "accept": 0.875,
    "external_prs": 16,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Drag-n-Drop Email Editor Component for React.js"
   },
   {
    "repo": "styled-components/styled-components",
@@ -525,7 +547,8 @@
    "base_score": 61.8,
    "accept": 0.925,
    "external_prs": 40,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Fast, expressive styling for React. Server components, client components, streaming SSR, React Native—one API."
   },
   {
    "repo": "Leaflet/Leaflet",
@@ -547,7 +570,8 @@
    "base_score": 60.9,
    "accept": 0.8260869565217391,
    "external_prs": 46,
-   "entry_issues": 9
+   "entry_issues": 9,
+   "description": "🍃 number one JavaScript library for interactive maps 🇺🇦"
   },
   {
    "repo": "bluewave-labs/Checkmate",
@@ -569,7 +593,8 @@
    "base_score": 64.2,
    "accept": 0.7647058823529411,
    "external_prs": 17,
-   "entry_issues": 5
+   "entry_issues": 5,
+   "description": "Checkmate is an open-source, self-hosted tool designed to track and monitor server hardware, uptime, response times, and incidents in real-time with beautiful visualizations. Don't be shy, join here: "
   },
   {
    "repo": "ifixai-ai/iFixAi",
@@ -591,7 +616,8 @@
    "base_score": 59.8,
    "accept": 0.9555555555555556,
    "external_prs": 45,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Independent Auditing of AI Agents. Run by human or the agent itself, to answer the most crucial question in the AI Agent Economy. Is the agent doing what is supposed to do? With iFixAi you can have th"
   },
   {
    "repo": "coding-horror/basic-computer-games",
@@ -613,7 +639,8 @@
    "base_score": 59.0,
    "accept": 0.96,
    "external_prs": 50,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "An updated version of the classic \"Basic Computer Games\" book, with well-written examples in a variety of common MEMORY SAFE, SCRIPTING programming languages. See https://coding-horror.github.io/basic"
   },
   {
    "repo": "FluentRead/FluentRead",
@@ -635,7 +662,8 @@
    "base_score": 71.6,
    "accept": 0.7272727272727273,
    "external_prs": 11,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "An open-source browser extension for bilingual translation. 一款开源的浏览器双语翻译插件。"
   },
   {
    "repo": "tinyhumansai/openhuman",
@@ -657,7 +685,8 @@
    "base_score": 70.2,
    "accept": 0.75,
    "external_prs": 12,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "The fastest, cheapest, most efficient open-source agent harness. Run more than 500 agents on a $10 VPS."
   },
   {
    "repo": "domcyrus/rustnet",
@@ -679,7 +708,8 @@
    "base_score": 60.5,
    "accept": 0.8,
    "external_prs": 5,
-   "entry_issues": 5
+   "entry_issues": 5,
+   "description": "Per-process network monitoring for your terminal with deep packet inspection. Cross-platform, sandboxed."
   },
   {
    "repo": "gildas-lormeau/SingleFile",
@@ -701,7 +731,8 @@
    "base_score": 72.2,
    "accept": 0.7073170731707317,
    "external_prs": 41,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Web Extension for saving a faithful copy of a complete web page in a single HTML file"
   },
   {
    "repo": "paperclipai/paperclip",
@@ -723,7 +754,8 @@
    "base_score": 60.2,
    "accept": 0.9047619047619048,
    "external_prs": 21,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "The open-source app everyone uses to manage agents at work"
   },
   {
    "repo": "affaan-m/ECC",
@@ -745,7 +777,8 @@
    "base_score": 57.0,
    "accept": 0.9743589743589743,
    "external_prs": 39,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond."
   },
   {
    "repo": "drduh/macOS-Security-and-Privacy-Guide",
@@ -767,7 +800,8 @@
    "base_score": 60.3,
    "accept": 0.8709677419354839,
    "external_prs": 31,
-   "entry_issues": 1
+   "entry_issues": 1,
+   "description": "Community guide to securing and improving privacy on macOS."
   },
   {
    "repo": "bilawalsidhu/gods-eye-view",
@@ -789,7 +823,8 @@
    "base_score": 57.1,
    "accept": 0.8888888888888888,
    "external_prs": 9,
-   "entry_issues": 3
+   "entry_issues": 3,
+   "description": "God's Eye View: a spy satellite simulator in your browser, except the data is real. Live open source spatial intelligence on a photorealistic 3D globe. Official site: godseyeview.ai"
   },
   {
    "repo": "9001/copyparty",
@@ -811,7 +846,8 @@
    "base_score": 70.4,
    "accept": 0.62,
    "external_prs": 50,
-   "entry_issues": 6
+   "entry_issues": 6,
+   "description": "Portable file server with accelerated resumable uploads, dedup, WebDAV, SFTP, FTP, TFTP, zeroconf, media indexer, thumbnails++ all in one file"
   },
   {
    "repo": "HKUDS/LightRAG",
@@ -833,7 +869,8 @@
    "base_score": 72.6,
    "accept": 0.6764705882352942,
    "external_prs": 34,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "[EMNLP2025] LightRAG: Simple and Fast Retrieval-Augmented Generation"
   },
   {
    "repo": "morluto/rea",
@@ -855,7 +892,8 @@
    "base_score": 72.0,
    "accept": 0.6666666666666666,
    "external_prs": 6,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Reverse engineer anything with agents, from app behavior down to native binaries."
   },
   {
    "repo": "binbyu/Reader",
@@ -877,7 +915,8 @@
    "base_score": 59.8,
    "accept": 0.8666666666666667,
    "external_prs": 15,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "A win32 txt file reader"
   },
   {
    "repo": "tstack/lnav",
@@ -899,7 +938,8 @@
    "base_score": 68.0,
    "accept": 0.71875,
    "external_prs": 32,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Log file navigator"
   },
   {
    "repo": "reduxjs/react-redux",
@@ -921,7 +961,8 @@
    "base_score": 66.0,
    "accept": 0.75,
    "external_prs": 28,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Official React bindings for Redux"
   },
   {
    "repo": "Open-Dev-Society/OpenStock",
@@ -943,7 +984,8 @@
    "base_score": 60.0,
    "accept": 0.8571428571428571,
    "external_prs": 14,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "OpenStock is an open-source alternative to expensive market platforms. Track real-time prices, set personalized alerts, and explore detailed company insights — built openly, for everyone, forever free"
   },
   {
    "repo": "pranshuparmar/witr",
@@ -965,7 +1007,8 @@
    "base_score": 63.1,
    "accept": 0.7941176470588235,
    "external_prs": 34,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Why is this running? Trace any process, port, container, or file back to what started it - CLI + TUI. "
   },
   {
    "repo": "angryip/ipscan",
@@ -987,7 +1030,8 @@
    "base_score": 61.2,
    "accept": 0.782608695652174,
    "external_prs": 46,
-   "entry_issues": 2
+   "entry_issues": 2,
+   "description": "Angry IP Scanner - fast and friendly network scanner"
   },
   {
    "repo": "Pouzor/homelable",
@@ -1009,7 +1053,8 @@
    "base_score": 61.1,
    "accept": 0.7692307692307693,
    "external_prs": 13,
-   "entry_issues": 2
+   "entry_issues": 2,
+   "description": "Self-hosted homelab infrastructure visualizer — interactive network diagram with live status monitoring"
   },
   {
    "repo": "xifangczy/cat-catch",
@@ -1031,7 +1076,8 @@
    "base_score": 64.3,
    "accept": 0.74,
    "external_prs": 50,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "猫抓 浏览器资源嗅探扩展 / cat-catch Browser Resource Sniffing Extension"
   },
   {
    "repo": "dherault/serverless-offline",
@@ -1053,7 +1099,8 @@
    "base_score": 64.2,
    "accept": 0.7368421052631579,
    "external_prs": 19,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Emulate AWS λ and API Gateway locally when developing your Serverless project"
   },
   {
    "repo": "DeusData/codebase-memory-mcp",
@@ -1075,7 +1122,8 @@
    "base_score": 74.1,
    "accept": 0.5909090909090909,
    "external_prs": 22,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Local code intelligence for developers and AI agents. Connect code, docs and infrastructure in a persistent graph, with CBM Lens, MCP tools, agent integrations and change-aware test selection."
   },
   {
    "repo": "parcel-bundler/parcel",
@@ -1097,7 +1145,8 @@
    "base_score": 79.9,
    "accept": 0.4444444444444444,
    "external_prs": 18,
-   "entry_issues": 19
+   "entry_issues": 19,
+   "description": "The zero configuration build tool for the web. 📦🚀"
   },
   {
    "repo": "tixl3d/tixl",
@@ -1119,7 +1168,8 @@
    "base_score": 64.0,
    "accept": 0.7272727272727273,
    "external_prs": 22,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "TiXL is an open source software to create realtime motion graphics."
   },
   {
    "repo": "lyogavin/airllm",
@@ -1141,7 +1191,8 @@
    "base_score": 72.2,
    "accept": 0.5833333333333334,
    "external_prs": 36,
-   "entry_issues": 1
+   "entry_issues": 1,
+   "description": "AirLLM 2.8T LLM inference with single 4GB GPU"
   },
   {
    "repo": "Akryum/vue-virtual-scroller",
@@ -1163,7 +1214,8 @@
    "base_score": 73.2,
    "accept": 0.5,
    "external_prs": 36,
-   "entry_issues": 18
+   "entry_issues": 18,
+   "description": "⚡️ Blazing fast scrolling for any amount of data"
   },
   {
    "repo": "tt-a1i/archify",
@@ -1185,7 +1237,8 @@
    "base_score": 67.7,
    "accept": 0.6571428571428571,
    "external_prs": 35,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Turn any idea, plan, or codebase into a beautiful interactive diagram. An agent skill for Claude Code, Codex, and more."
   },
   {
    "repo": "baomidou/dynamic-datasource",
@@ -1207,7 +1260,8 @@
    "base_score": 61.1,
    "accept": 0.7586206896551724,
    "external_prs": 29,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "dynamic datasource for springboot 多数据源 动态数据源 主从分离 读写分离 分布式事务 "
   },
   {
    "repo": "PHPMailer/PHPMailer",
@@ -1229,7 +1283,8 @@
    "base_score": 57.8,
    "accept": 0.7142857142857143,
    "external_prs": 28,
-   "entry_issues": 6
+   "entry_issues": 6,
+   "description": "The classic email sending library for PHP"
   },
   {
    "repo": "tinyplex/tinybase",
@@ -1251,7 +1306,8 @@
    "base_score": 62.0,
    "accept": 0.7391304347826086,
    "external_prs": 46,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "A reactive data store & sync engine."
   },
   {
    "repo": "SpotX-Official/SpotX",
@@ -1273,7 +1329,8 @@
    "base_score": 65.4,
    "accept": 0.6818181818181818,
    "external_prs": 44,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "SpotX patcher used for patching the desktop version of Spotify"
   },
   {
    "repo": "visit1985/mdp",
@@ -1295,7 +1352,8 @@
    "base_score": 57.8,
    "accept": 0.8085106382978723,
    "external_prs": 47,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "A command-line based markdown presentation tool."
   },
   {
    "repo": "NanmiCoder/MediaCrawler",
@@ -1317,7 +1375,8 @@
    "base_score": 68.7,
    "accept": 0.625,
    "external_prs": 48,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "小红书笔记 | 评论爬虫、抖音视频 | 评论爬虫、快手视频 | 评论爬虫、B 站视频 ｜ 评论爬虫、微博帖子 ｜ 评论爬虫、百度贴吧帖子 ｜ 百度贴吧评论回复爬虫  | 知乎问答文章｜评论爬虫"
   },
   {
    "repo": "samdutton/simpl",
@@ -1339,7 +1398,8 @@
    "base_score": 65.9,
    "accept": 0.6666666666666666,
    "external_prs": 6,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Simplest possible examples of HTML, CSS and Javascript:"
   },
   {
    "repo": "jgm/pandoc",
@@ -1361,7 +1421,8 @@
    "base_score": 69.3,
    "accept": 0.5217391304347826,
    "external_prs": 46,
-   "entry_issues": 17
+   "entry_issues": 17,
+   "description": "Universal markup converter"
   },
   {
    "repo": "Sayi/poi-tl",
@@ -1383,7 +1444,8 @@
    "base_score": 67.8,
    "accept": 0.6,
    "external_prs": 25,
-   "entry_issues": 1
+   "entry_issues": 1,
+   "description": "Generate awesome word(docx) with template"
   },
   {
    "repo": "mlc-ai/mlc-llm",
@@ -1405,7 +1467,8 @@
    "base_score": 59.7,
    "accept": 0.7,
    "external_prs": 40,
-   "entry_issues": 2
+   "entry_issues": 2,
+   "description": "Universal LLM Deployment Engine with ML Compilation"
   },
   {
    "repo": "Syllo/nvtop",
@@ -1427,7 +1490,8 @@
    "base_score": 59.6,
    "accept": 0.7380952380952381,
    "external_prs": 42,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "GPU & Accelerator process monitoring for AMD, Apple, Huawei, Intel, NVIDIA and Qualcomm"
   },
   {
    "repo": "Kaliiiiiiiiii-Vinyzu/patchright",
@@ -1449,7 +1513,8 @@
    "base_score": 63.8,
    "accept": 0.6216216216216216,
    "external_prs": 37,
-   "entry_issues": 2
+   "entry_issues": 2,
+   "description": "Undetected version of the Playwright testing and automation library."
   },
   {
    "repo": "lc/gau",
@@ -1471,7 +1536,8 @@
    "base_score": 66.4,
    "accept": 0.6129032258064516,
    "external_prs": 31,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl."
   },
   {
    "repo": "asLody/VirtualApp",
@@ -1493,7 +1559,8 @@
    "base_score": 67.4,
    "accept": 0.5897435897435898,
    "external_prs": 39,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Virtual Engine for Android(Support 14.0 in business version)"
   },
   {
    "repo": "dcloudio/uni-app",
@@ -1515,7 +1582,8 @@
    "base_score": 79.9,
    "accept": 0.4,
    "external_prs": 5,
-   "entry_issues": 3
+   "entry_issues": 3,
+   "description": "A cross-platform framework using Vue.js"
   },
   {
    "repo": "FCL-Team/FoldCraftLauncher",
@@ -1537,7 +1605,8 @@
    "base_score": 64.9,
    "accept": 0.625,
    "external_prs": 8,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Fold Craft Launcher, an Android Minecraft : Java Edition launcher."
   },
   {
    "repo": "aandrew-me/ytDownloader",
@@ -1559,7 +1628,8 @@
    "base_score": 62.1,
    "accept": 0.6666666666666666,
    "external_prs": 6,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Desktop app to download audio/video from hundreds of sites"
   },
   {
    "repo": "mifi/lossless-cut",
@@ -1581,7 +1651,8 @@
    "base_score": 62.8,
    "accept": 0.6,
    "external_prs": 5,
-   "entry_issues": 2
+   "entry_issues": 2,
+   "description": "The swiss army knife of lossless video/audio editing"
   },
   {
    "repo": "Leonxlnx/taste-skill",
@@ -1603,7 +1674,8 @@
    "base_score": 62.9,
    "accept": 0.631578947368421,
    "external_prs": 19,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Agent skills that give coding agents taste: art direction, reference images and a browser check instead of generic AI pages"
   },
   {
    "repo": "juanfont/headscale",
@@ -1625,7 +1697,8 @@
    "base_score": 71.7,
    "accept": 0.42857142857142855,
    "external_prs": 7,
-   "entry_issues": 10
+   "entry_issues": 10,
+   "description": "An open source, self-hosted implementation of the Tailscale control server"
   },
   {
    "repo": "gorhill/uBlock",
@@ -1647,7 +1720,8 @@
    "base_score": 75.2,
    "accept": 0.4642857142857143,
    "external_prs": 28,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "uBlock Origin - An efficient blocker for Chromium and Firefox. Fast and lean."
   },
   {
    "repo": "emanuele-f/PCAPdroid",
@@ -1669,7 +1743,8 @@
    "base_score": 64.5,
    "accept": 0.5434782608695652,
    "external_prs": 46,
-   "entry_issues": 3
+   "entry_issues": 3,
+   "description": "No-root network monitor, firewall and PCAP dumper for Android"
   },
   {
    "repo": "ventoy/Ventoy",
@@ -1691,7 +1766,8 @@
    "base_score": 73.3,
    "accept": 0.48,
    "external_prs": 50,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "A new bootable USB solution."
   },
   {
    "repo": "axllent/mailpit",
@@ -1713,7 +1789,8 @@
    "base_score": 57.1,
    "accept": 0.7058823529411765,
    "external_prs": 34,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "An email and SMTP testing tool with API for developers"
   },
   {
    "repo": "x-hw/amazing-qr",
@@ -1735,7 +1812,8 @@
    "base_score": 65.9,
    "accept": 0.5625,
    "external_prs": 16,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "💮 amazing QRCode generator (supporting animated gif) - amazing 二维码生成器（支持 gif 动态图片二维码）"
   },
   {
    "repo": "HyNetworks/hysteria",
@@ -1757,7 +1835,8 @@
    "base_score": 70.8,
    "accept": 0.5,
    "external_prs": 14,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Hysteria is powerful, lightning-fast, and censorship-resistant open-source proxy software"
   },
   {
    "repo": "eternity4719/HowToLiveBetter",
@@ -1779,7 +1858,8 @@
    "base_score": 58.0,
    "accept": 0.68,
    "external_prs": 50,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "高性价比人生指南: 长寿防病、急救、省钱理财、法律红线、失业与工伤、医保社保、恋爱婚育、怀孕育儿、创业与做平台合规、出国与技能。每条写明成本、收益、证据等级和原始出处，只引期刊论文与官方文件。"
   },
   {
    "repo": "JoshClose/CsvHelper",
@@ -1801,7 +1881,8 @@
    "base_score": 67.6,
    "accept": 0.5263157894736842,
    "external_prs": 38,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Library to help reading and writing CSV files"
   },
   {
    "repo": "nolimits4web/swiper",
@@ -1823,7 +1904,8 @@
    "base_score": 62.9,
    "accept": 0.5714285714285714,
    "external_prs": 49,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Most modern mobile touch slider with hardware accelerated transitions"
   },
   {
    "repo": "Predidit/Kazumi",
@@ -1845,7 +1927,8 @@
    "base_score": 68.6,
    "accept": 0.42,
    "external_prs": 50,
-   "entry_issues": 6
+   "entry_issues": 6,
+   "description": "基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕，支持实时超分辨率。"
   },
   {
    "repo": "colbymchenry/codegraph",
@@ -1867,7 +1950,8 @@
    "base_score": 64.3,
    "accept": 0.5483870967741935,
    "external_prs": 31,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, Codex, Gemini, Cursor, OpenCode, AntiGravity, Kiro, CoPilot, and Hermes Agent — fewer tokens, fewer tool calls, 100% loca"
   },
   {
    "repo": "fatedier/frp",
@@ -1889,7 +1973,8 @@
    "base_score": 60.9,
    "accept": 0.5714285714285714,
    "external_prs": 14,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet."
   },
   {
    "repo": "EastWorld/wechat-app-mall",
@@ -1911,7 +1996,8 @@
    "base_score": 62.4,
    "accept": 0.54,
    "external_prs": 50,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "微信小程序商城，微信小程序微店"
   },
   {
    "repo": "vnpy/vnpy",
@@ -1933,7 +2019,8 @@
    "base_score": 68.8,
    "accept": 0.45454545454545453,
    "external_prs": 44,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "基于Python的开源量化交易平台开发框架"
   },
   {
    "repo": "exelban/stats",
@@ -1955,7 +2042,8 @@
    "base_score": 74.4,
    "accept": 0.38,
    "external_prs": 50,
-   "entry_issues": 1
+   "entry_issues": 1,
+   "description": "macOS system monitor in your menu bar"
   },
   {
    "repo": "Mail-0/Zero",
@@ -1977,7 +2065,8 @@
    "base_score": 68.7,
    "accept": 0.4444444444444444,
    "external_prs": 45,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Experience email the way you want with Mail0 – the first open source email app that puts your privacy and safety first. Join the discord: https://mail0.link/discord"
   },
   {
    "repo": "nashsu/llm_wiki",
@@ -1999,7 +2088,8 @@
    "base_score": 70.7,
    "accept": 0.42,
    "external_prs": 50,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "LLM Wiki is a cross-platform desktop application that turns your documents into an organized, interlinked knowledge base — automatically. Instead of traditional RAG (retrieve-and-answer from scratch e"
   },
   {
    "repo": "Baekalfen/PyBoy",
@@ -2021,7 +2111,8 @@
    "base_score": 65.3,
    "accept": 0.45,
    "external_prs": 20,
-   "entry_issues": 2
+   "entry_issues": 2,
+   "description": "Game Boy emulator written in Python"
   },
   {
    "repo": "frida/frida",
@@ -2043,7 +2134,8 @@
    "base_score": 78.7,
    "accept": 0.3333333333333333,
    "external_prs": 24,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Main repo for hosting release binaries"
   },
   {
    "repo": "js-cookie/js-cookie",
@@ -2065,7 +2157,8 @@
    "base_score": 71.6,
    "accept": null,
    "external_prs": 0,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "A simple, lightweight JavaScript API for handling cookies, client-side."
   },
   {
    "repo": "schollz/croc",
@@ -2087,7 +2180,8 @@
    "base_score": 57.1,
    "accept": 0.5555555555555556,
    "external_prs": 27,
-   "entry_issues": 1
+   "entry_issues": 1,
+   "description": "Easily and securely send things from one computer to another :crocodile: :package:"
   },
   {
    "repo": "hmjz100/LinkSwift",
@@ -2109,7 +2203,8 @@
    "base_score": 67.5,
    "accept": 0.42857142857142855,
    "external_prs": 21,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "一个基于 JavaScript 的网盘文件下载地址获取工具。基于【网盘直链下载助手】修改 ，支持 百度网盘 / 阿里云盘 / 中国移动云盘 / 天翼云盘 / 迅雷云盘 / 夸克网盘 / UC网盘 / 123云盘 八大网盘"
   },
   {
    "repo": "hydra-ecosystem/hydra",
@@ -2131,7 +2226,8 @@
    "base_score": 65.8,
    "accept": 0.4,
    "external_prs": 5,
-   "entry_issues": 3
+   "entry_issues": 3,
+   "description": "Hydra is a framework for elegantly configuring complex applications"
   },
   {
    "repo": "helmetjs/helmet",
@@ -2153,7 +2249,8 @@
    "base_score": 65.4,
    "accept": 0.4444444444444444,
    "external_prs": 18,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Help secure Express apps with various HTTP headers"
   },
   {
    "repo": "CVHub520/X-AnyLabeling",
@@ -2175,7 +2272,8 @@
    "base_score": 64.0,
    "accept": 0.46,
    "external_prs": 50,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "X-AnyLabeling: A lightweight, efficient, and unified cross-platform desktop application for annotating text, image, video, point cloud and multimodal data, combining versatile built-in tools with stat"
   },
   {
    "repo": "chuspeeism/dashi-ppt-skill",
@@ -2197,7 +2295,8 @@
    "base_score": 68.7,
    "accept": null,
    "external_prs": 2,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "An AI-agent skill that generates browser-editable presentations from multiple visual themes, exportable to HTML, PDF, and PPTX."
   },
   {
    "repo": "debpalash/VoiceStudio",
@@ -2219,7 +2318,8 @@
    "base_score": 62.7,
    "accept": 0.46875,
    "external_prs": 32,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "VoiceStudio is the open-source, fully-local ElevenLabs alternative — voice cloning, voice design, video dubbing, dictation, transcription & audiobook creation in 646 languages."
   },
   {
    "repo": "kingcharleslzy-ai/dsh-purge",
@@ -2241,7 +2341,8 @@
    "base_score": 62.8,
    "accept": 0.45454545454545453,
    "external_prs": 22,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "dsh-purge Community · DeepSeek Harness 社区维护版：宿主兼容、状态诊断、提示词管理、更新与本机备份回滚。基于小杨 / YuJunZhiXue 的 dsh-purge。"
   },
   {
    "repo": "D4Vinci/Scrapling",
@@ -2263,7 +2364,8 @@
    "base_score": 63.8,
    "accept": 0.4375,
    "external_prs": 48,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "🕷️ The BEST Web Scraping framework that handles everything from a single request to a full-scale crawl! Don't be shy, join here: https://discord.gg/EMgGbDceNQ and follow here for daily tips and tricks"
   },
   {
    "repo": "hugohe3/ppt-master",
@@ -2285,7 +2387,8 @@
    "base_score": 61.7,
    "accept": 0.44,
    "external_prs": 50,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "AI turns documents or topics into real, native PowerPoint decks—with native shapes, transitions and animations, data-backed charts and tables on demand, audio narration from speaker notes, and support"
   },
   {
    "repo": "starfederation/datastar",
@@ -2307,7 +2410,8 @@
    "base_score": 64.9,
    "accept": 0.4,
    "external_prs": 30,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "The hypermedia framework."
   },
   {
    "repo": "Acly/krita-ai-diffusion",
@@ -2329,7 +2433,8 @@
    "base_score": 72.7,
    "accept": 0.3191489361702128,
    "external_prs": 47,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Streamlined interface for generating images with AI in Krita. Inpaint and outpaint with optional text prompt, no tweaking required."
   },
   {
    "repo": "hakimel/reveal.js",
@@ -2351,7 +2456,8 @@
    "base_score": 81.9,
    "accept": 0.23404255319148937,
    "external_prs": 47,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "The HTML Presentation Framework"
   },
   {
    "repo": "newsnext/newsnow",
@@ -2373,7 +2479,8 @@
    "base_score": 75.9,
    "accept": 0.28,
    "external_prs": 50,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Elegant reading of real-time and hottest news"
   },
   {
    "repo": "gitroomhq/postiz-app",
@@ -2395,7 +2502,8 @@
    "base_score": 64.8,
    "accept": 0.375,
    "external_prs": 16,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "📨 The ultimate agentic social media scheduling tool 🤖"
   },
   {
    "repo": "go-vgo/robotgo",
@@ -2417,7 +2525,8 @@
    "base_score": 64.7,
    "accept": 0.375,
    "external_prs": 8,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "RobotGo, Go Native cross-platform RPA, GUI automation, Auto test and Computer use  @vcaesar"
   },
   {
    "repo": "wdcpclover/ai4paper",
@@ -2439,7 +2548,8 @@
    "base_score": 62.4,
    "accept": null,
    "external_prs": 0,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Zotero AI 插件(Zotero AI plugin):PDF 全文翻译(双语对照,尽量保持排版)· 划词翻译 · 文库知识库问答 · AI 精读 · 列表直显期刊分区 / 影响因子 · 2.4 亿文献检索一键入库 · 适配 Zotero 7–10 · 免安装网页版 app.ai4paper.pro"
   },
   {
    "repo": "QLHazyCoder/FlowPilot",
@@ -2461,7 +2571,8 @@
    "base_score": 67.5,
    "accept": 0.3409090909090909,
    "external_prs": 44,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Chrome扩展：支持GPT（Codex） / kiro / Grok自动注册、上传"
   },
   {
    "repo": "ChatGPTBox-dev/chatGPTBox",
@@ -2483,7 +2594,8 @@
    "base_score": 70.4,
    "accept": 0.2857142857142857,
    "external_prs": 7,
-   "entry_issues": 1
+   "entry_issues": 1,
+   "description": "Integrating ChatGPT into your browser deeply, everything you need is here"
   },
   {
    "repo": "atlas-engineer/nyxt",
@@ -2505,7 +2617,8 @@
    "base_score": 72.5,
    "accept": 0.2692307692307692,
    "external_prs": 26,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Nyxt - the hacker's browser."
   },
   {
    "repo": "openspug/spug",
@@ -2527,7 +2640,8 @@
    "base_score": 67.7,
    "accept": 0.2962962962962963,
    "external_prs": 27,
-   "entry_issues": 1
+   "entry_issues": 1,
+   "description": "Spug is a lightweight agent-free automatic operation and maintenance platform designed for small and medium-sized enterprises. It integrates host management, host batch execution, host online terminal"
   },
   {
    "repo": "asgeirtj/system_prompts_leaks",
@@ -2549,7 +2663,8 @@
    "base_score": 76.6,
    "accept": 0.22,
    "external_prs": 50,
-   "entry_issues": 1
+   "entry_issues": 1,
+   "description": "Leaked system prompts of ChatGPT, Claude, Gemini and more. The hidden system prompt of every popular chatbot, in full, every version since May 2025. Also Anthropic Claude Code, OpenAI Codex, Google An"
   },
   {
    "repo": "Unitech/pm2",
@@ -2571,7 +2686,8 @@
    "base_score": 77.3,
    "accept": 0.22448979591836735,
    "external_prs": 49,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Node.js/Typescript/Bun Production Process Manager with a built-in Load Balancer."
   },
   {
    "repo": "react-bootstrap/react-bootstrap",
@@ -2593,7 +2709,8 @@
    "base_score": 65.2,
    "accept": 0.3,
    "external_prs": 10,
-   "entry_issues": 2
+   "entry_issues": 2,
+   "description": "Bootstrap components built with React"
   },
   {
    "repo": "ntdevlabs/tiny11builder",
@@ -2615,7 +2732,8 @@
    "base_score": 74.6,
    "accept": 0.23255813953488372,
    "external_prs": 43,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "WinUI app for building smaller, customized Windows 11 images."
   },
   {
    "repo": "dnshe/DNSHE-FreeDomains",
@@ -2637,7 +2755,8 @@
    "base_score": 61.2,
    "accept": 0.3333333333333333,
    "external_prs": 3,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "🌐 DNSHE — Free subdomains for developers, with Anycast DNS, a REST API, and free renewal within 180 days before expiry. Available suffixes: us.ci, cc.cd, de5.net, ccwu.cc."
   },
   {
    "repo": "linshenkx/prompt-optimizer",
@@ -2659,7 +2778,8 @@
    "base_score": 68.2,
    "accept": 0.25,
    "external_prs": 48,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "An AI prompt optimizer for writing better prompts and getting better AI results."
   },
   {
    "repo": "bellard/quickjs",
@@ -2681,7 +2801,8 @@
    "base_score": 72.3,
    "accept": 0.2,
    "external_prs": 50,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Public repository of the QuickJS Javascript Engine."
   },
   {
    "repo": "mack-a/v2ray-agent",
@@ -2703,7 +2824,8 @@
    "base_score": 66.7,
    "accept": 0.23404255319148937,
    "external_prs": 47,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Xray、Tuic、hysteria2、sing-box 八合一一键脚本"
   },
   {
    "repo": "langflow-ai/langflow",
@@ -2725,7 +2847,8 @@
    "base_score": 59.8,
    "accept": 0.3,
    "external_prs": 10,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows."
   },
   {
    "repo": "MeanderingProgrammer/render-markdown.nvim",
@@ -2747,7 +2870,8 @@
    "base_score": 59.7,
    "accept": 0.3,
    "external_prs": 50,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "Improve viewing Markdown in Neovim"
   },
   {
    "repo": "hectorqin/reader",
@@ -2769,7 +2893,8 @@
    "base_score": 59.6,
    "accept": 0.2857142857142857,
    "external_prs": 42,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": ""
   },
   {
    "repo": "winfunc/opcode",
@@ -2791,7 +2916,8 @@
    "base_score": 65.9,
    "accept": 0.2127659574468085,
    "external_prs": 47,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "A powerful GUI app and Toolkit for Claude Code - Create custom agents, manage interactive Claude Code sessions, run secure background agents, and more."
   },
   {
    "repo": "gentilkiwi/mimikatz",
@@ -2813,7 +2939,8 @@
    "base_score": 57.0,
    "accept": 0.2857142857142857,
    "external_prs": 35,
-   "entry_issues": 0
+   "entry_issues": 0,
+   "description": "A little tool to play with Windows security"
   }
  ]
 }
