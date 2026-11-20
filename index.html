@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>lfarc — repos worth contributing to</title>
+<meta name="description" content="GitHub repos that many people use but few people maintain, ranked weekly.">
+<style>
+  :root {
+    --bg: #fbfbfa; --panel: #ffffff; --text: #1d1d1b; --muted: #6b6b66; --line: #e6e5e0;
+    --accent: #f26625; --accent-soft: #fff0e6; --warn: #a05a00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151514; --panel: #1d1d1b; --text: #ecebe6; --muted: #9a9a93; --line: #2d2d2a;
+      --accent: #ff7a3d; --accent-soft: #2d1f16; --warn: #e0a64a;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { margin: 0 0 4px; font-size: 28px; letter-spacing: -0.02em; }
+  h1 .full { font-weight: 400; color: var(--muted); margin-left: 8px; }
+  .tagline { margin: 0 0 4px; color: var(--muted); }
+  .meta { margin: 0 0 24px; color: var(--muted); font-size: 13px; }
+  .meta a, footer a { color: var(--accent); }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+  .controls input, .controls select {
+    padding: 8px 10px; border: 1px solid var(--line); border-radius: 3px;
+    background: var(--panel); color: var(--text); font: inherit; min-width: 0;
+  }
+  .controls input[type="search"] { flex: 1 1 220px; }
+  .count { align-self: center; color: var(--muted); font-size: 13px; margin-left: auto; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+  th:nth-child(2), td:nth-child(2), th:last-child, td:last-child { text-align: left; }
+  th { font-weight: 600; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em;
+       cursor: pointer; user-select: none; position: sticky; top: 0; background: var(--panel); }
+  th[aria-sort="descending"]::after { content: " ▾"; }
+  th[aria-sort="ascending"]::after { content: " ▴"; }
+  tr:last-child td { border-bottom: 0; }
+  tbody tr:hover { background: var(--accent-soft); }
+  td a { color: var(--text); text-decoration: none; font-weight: 600; }
+  td a:hover { color: var(--accent); text-decoration: underline; }
+  .score { display: inline-flex; align-items: center; gap: 8px; min-width: 96px; justify-content: flex-end; }
+  .bar { width: 48px; height: 6px; border-radius: 1px; background: var(--line); overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: var(--accent); }
+  .muted { color: var(--muted); }
+  .state { padding: 40px 16px; text-align: center; color: var(--muted); }
+  .state.error { color: var(--warn); }
+  details { margin-top: 28px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); padding: 4px 16px; }
+  summary { cursor: pointer; font-weight: 600; padding: 12px 0; }
+  details p, details li { color: var(--muted); }
+  details code { background: var(--accent-soft); padding: 1px 5px; border-radius: 2px; font-size: 13px; }
+  footer { margin-top: 28px; color: var(--muted); font-size: 13px; }
+  .credit { margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>lfarc <span class="full">Looking For A Repo to Contribute</span></h1>
+  <p class="tagline">Repos that many people use but few people maintain, so your contribution actually matters.</p>
+  <p class="meta" id="meta">Loading…</p>
+
+  <div class="controls">
+    <input type="search" id="q" placeholder="Search repos…" aria-label="Search repos">
+    <select id="lang" aria-label="Language"><option value="">All languages</option></select>
+    <select id="minstars" aria-label="Minimum stars">
+      <option value="0">Any stars</option>
+      <option value="5000">5k+ stars</option>
+      <option value="10000">10k+ stars</option>
+      <option value="50000">50k+ stars</option>
+    </select>
+    <select id="minacc" aria-label="Minimum outsider PR acceptance">
+      <option value="0">Any PR acceptance</option>
+      <option value="0.5">50%+ outsider PRs merged</option>
+      <option value="0.7">70%+ outsider PRs merged</option>
+    </select>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="table-wrap">
+    <table id="tbl" hidden>
+      <thead><tr id="head"></tr></thead>
+      <tbody id="body"></tbody>
+    </table>
+    <div class="state" id="state">Loading ranking…</div>
+  </div>
+
+  <details>
+    <summary>How the score works</summary>
+    <p>
+      <b>Effective contributors (EFF)</b> = <code>1 / Σ(commit share²)</code> over the recent window, bots excluded.
+      If one person makes 90% of the commits, EFF is about 1.2 — essentially a one-person project.
+    </p>
+    <ul>
+      <li><b>Scarcity</b> <code>1 / (1 + (EFF − 1) / 2.5)</code> multiplies everything, so many contributors means a low score no matter how many stars.</li>
+      <li><b>Base</b> <code>100 × scarcity × (0.4 + 0.4 × popularity + 0.2 × demand)</code>, where popularity and demand are smoothly saturating functions of stars and issues per effective contributor.</li>
+      <li><b>Outsider PR acceptance</b> scales the score by <code>0.25 + 0.75 × acceptance</code>. In a backtest, past acceptance was the best predictor of future acceptance.</li>
+      <li><b>Entry issues</b> (<code>help wanted</code> + <code>good first issue</code>): 5 or more gives a +10% bonus.</li>
+      <li>Excluded: dead repos, docs and curated lists, known companies, verified organizations, company-driven repos, and repos closed to outsiders.</li>
+    </ul>
+    <p>These are heuristics and can be wrong. Treat the ranking as a starting point, not a verdict.</p>
+  </details>
+
+  <footer>
+    Data is regenerated weekly by a GitHub Action ·
+    <a href="https://github.com/jounw/lfarc">source on GitHub</a>
+    <div class="credit">Made by <a href="https://github.com/jounw">jounw</a> (Joun Won)</div>
+  </footer>
+</div>
+
+<script>
+const COLS = [
+  { key: "rank",  label: "#",         num: true,  sort: false },
+  { key: "repo",  label: "Repo",      num: false },
+  { key: "score", label: "Score",     num: true },
+  { key: "stars", label: "★",         num: true },
+  { key: "eff",   label: "Eff. contrib.", num: true },
+  { key: "top",   label: "Top 1 share",   num: true },
+  { key: "acc",   label: "PR accepted",   num: true },
+  { key: "entry", label: "HW/GFI",    num: true },
+  { key: "lang",  label: "Language",  num: false },
+];
+
+let rows = [];
+let sortKey = "score", sortDir = -1;
+const $ = (id) => document.getElementById(id);
+
+function el(tag, props = {}, ...kids) {
+  const n = document.createElement(tag);
+  Object.assign(n, props);
+  for (const k of kids) n.append(k);
+  return n;
+}
+
+function normalize(doc) {
+  const days = doc.meta?.params?.days ?? 90;
+  return (doc.repos || []).map((r) => ({
+    repo: r.repo, url: r.url, score: r.score, stars: r.stars,
+    eff: r.effective_contributors, top: r.top_share,
+    acc: r.accept ?? null, entry: r.entry_issues ?? 0, lang: r.language || "",
+    commits: r[`commits_${days}d`], capped: !!r.capped,
+  }));
+}
+
+function sortValue(r, key) {
+  const v = r[key];
+  if (v === null || v === undefined || v === "") return key === "lang" || key === "repo" ? "" : -Infinity;
+  return typeof v === "string" ? v.toLowerCase() : v;
+}
+
+function render() {
+  const q = $("q").value.trim().toLowerCase();
+  const lang = $("lang").value;
+  const minStars = +$("minstars").value;
+  const minAcc = +$("minacc").value;
+
+  const shown = rows.filter((r) =>
+    (!q || r.repo.toLowerCase().includes(q)) &&
+    (!lang || r.lang === lang) &&
+    r.stars >= minStars &&
+    (!minAcc || (r.acc !== null && r.acc >= minAcc))
+  );
+  shown.sort((a, b) => {
+    const x = sortValue(a, sortKey), y = sortValue(b, sortKey);
+    return (x < y ? -1 : x > y ? 1 : 0) * sortDir;
+  });
+
+  $("count").textContent = `${shown.length} of ${rows.length} repos`;
+  const body = $("body");
+  body.replaceChildren();
+  shown.forEach((r, i) => {
+    const link = /^https:\/\/github\.com\//.test(r.url || "") ? r.url : null;
+    const nameCell = link ? el("a", { href: link, target: "_blank", rel: "noopener", textContent: r.repo })
+                          : el("span", { textContent: r.repo });
+    const bar = el("span", { className: "bar" }, el("i", { style: `width:${Math.max(0, Math.min(100, r.score))}%` }));
+    const score = el("span", { className: "score" }, bar, el("span", { textContent: r.score.toFixed(1) }));
+    const cells = [
+      el("td", { className: "muted", textContent: String(i + 1) }),
+      el("td", {}, nameCell),
+      el("td", {}, score),
+      el("td", { textContent: r.stars.toLocaleString() }),
+      el("td", { textContent: String(r.eff) }),
+      el("td", { textContent: `${Math.round(r.top * 100)}%` }),
+      el("td", { textContent: r.acc === null ? "?" : `${Math.round(r.acc * 100)}%`, className: r.acc === null ? "muted" : "" }),
+      el("td", { textContent: String(r.entry) }),
+      el("td", { textContent: r.lang || "-", className: r.lang ? "" : "muted" }),
+    ];
+    body.append(el("tr", {}, ...cells));
+  });
+  if (!shown.length) {
+    $("tbl").hidden = true;
+    $("state").hidden = false;
+    $("state").className = "state";
+    $("state").textContent = "No repos match these filters.";
+  } else {
+    $("tbl").hidden = false;
+    $("state").hidden = true;
+  }
+}
+
+function buildHead() {
+  const tr = $("head");
+  for (const c of COLS) {
+    const th = el("th", { textContent: c.label });
+    if (c.sort !== false) {
+      th.addEventListener("click", () => {
+        sortDir = sortKey === c.key ? -sortDir : (c.num ? -1 : 1);
+        sortKey = c.key;
+        updateSortMarks();
+        render();
+      });
+    }
+    th.dataset.key = c.key;
+    tr.append(th);
+  }
+  updateSortMarks();
+}
+
+function updateSortMarks() {
+  for (const th of $("head").children) {
+    if (th.dataset.key === sortKey) th.setAttribute("aria-sort", sortDir < 0 ? "descending" : "ascending");
+    else th.removeAttribute("aria-sort");
+  }
+}
+
+async function main() {
+  buildHead();
+  try {
+    const res = await fetch("data/latest.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const doc = await res.json();
+    rows = normalize(doc);
+    const m = doc.meta || {};
+    $("meta").textContent =
+      `As of ${(m.generated_at || "").slice(0, 10)} · score v${m.score_version ?? "?"} · ` +
+      `${rows.length} repos after filtering a pool of ${m.params?.pool ?? "?"} · based on commits in the last ${m.params?.days ?? 90} days`;
+    const langs = [...new Set(rows.map((r) => r.lang).filter(Boolean))].sort();
+    for (const l of langs) $("lang").append(el("option", { value: l, textContent: l }));
+    for (const id of ["q", "lang", "minstars", "minacc"]) $(id).addEventListener("input", render);
+    render();
+  } catch (e) {
+    $("meta").textContent = "";
+    $("state").className = "state error";
+    $("state").textContent = `Could not load data/latest.json (${e.message}). The first snapshot may not have been generated yet.`;
+  }
+}
+main();
+</script>
+</body>
+</html>

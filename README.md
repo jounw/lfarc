@@ -90,6 +90,12 @@ python3 snapshot.py --pool 50 --out /tmp/snap   # quick test
 - Bump `SCORE_VERSION` in `lfarc.py` whenever the scoring formula or filters change, so old snapshots can be told apart.
 - When the API rate limit is hit, requests wait until the reset time and retry (for unattended runs).
 
+## Website
+
+`index.html` is a static page (no build step) that reads `data/latest.json` and shows a sortable, filterable ranking. To publish it with GitHub Pages: repo Settings -> Pages -> "Deploy from a branch" -> `main` / `/ (root)`. The page is then served at `https://<user>.github.io/lfarc/` and updates whenever the weekly snapshot commit lands.
+
+To preview locally, serve the repo root (`python3 -m http.server 8000`) after a snapshot exists, then open `http://localhost:8000/`.
+
 ## Limitations
 - Candidates come from GitHub search: the star range is split into `--buckets` (default 8) log-scale buckets, and each bucket takes the top-starred repos first (`pool / buckets` each, with unused shares redistributed). To see deeper, raise `--pool` or narrow the range.
 - Issue counts include questions, spam, and, in the GitHub API, open PRs. Treat the score as a guide.
