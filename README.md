@@ -2,7 +2,14 @@
 
 Not another good-first-issue list. lfarc scores GitHub repos that **many people use but few people maintain**, so you can find projects where your contribution actually matters.
 
+### 👉 **[Open the live ranking: jounw.github.io/lfarc](https://jounw.github.io/lfarc/)**
+
+Search, sort and filter all ranked repos on the website (updated weekly).
+
 ## This week's ranking
+
+The top repos are shown below. For the full list with search and filters, see the **[website](https://jounw.github.io/lfarc/)**.
+
 <!-- LFARC:START -->
 _As of 2026-11-20 · score v4 · based on commits in the last 90 days · top 30 after filtering a candidate pool of 1000_
 
@@ -71,7 +78,7 @@ Effective contributors (EFF) = `1 / sum(commit share^2)` over the last N days (d
 - Docs / curated-list / tutorial repos are excluded heuristically (no language, topics, names or descriptions such as awesome/tutorial/roadmap/interview). Use `--include-docs` to keep them.
 - Corporate and closed repos are excluded (use `--include-closed` to keep them):
   - Owners on the known big-company / government list (`CORP_ORGS` in `lfarc.py`: microsoft, google, meta, aws, nvidia, openai, anthropics, android, NSA, ...). Add or edit entries in `lfarc.py`.
-  - Owners that are GitHub **verified organizations** (domain-verified, via `is_verified` from `/orgs/{login}`).
+  - Organizations that look company-run (only orgs with a website): the org's name or description reads like a company (Inc, Labs, Ltd, GmbH, Solutions, ...; academic wording excluded), or the top committer's profile company contains the org name (for example company `@serverless` on `serverless/*`). GitHub hides `is_verified` from non-members, so verified-org checks are not used.
   - Repos where 50%+ of recent commit authors share one company email domain (personal mail and universities excluded) with 2+ authors, i.e. company-driven projects.
   - Repos where outsiders make up under 10% of recently closed PRs, or outsider PR acceptance is under 20%.
 - The `TOP1%` column in the output is the top contributor's commit share (a bus-factor signal).

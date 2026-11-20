@@ -19,7 +19,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 API = "https://api.github.com"
-SCORE_VERSION = 4  # Bump whenever the scoring formula or filters change (recorded in snapshots)
+SCORE_VERSION = 5  # Bump whenever the scoring formula or filters change (recorded in snapshots)
 
 
 def get_token():
@@ -126,20 +126,6 @@ def is_docs_repo(r):
     return bool(DOC_DESC.search(r.get("description") or ""))
 
 
-def verified_orgs(repos):
-    """Set of owner logins that are GitHub "verified organizations" (domain-verified = companies / official orgs)."""
-    logins = {r["owner"]["login"] for r in repos if r["owner"]["type"] == "Organization"}
-
-    def check(login):
-        try:
-            return login if api(f"/orgs/{login}").get("is_verified") else None
-        except urllib.error.HTTPError:
-            return None
-
-    with ThreadPoolExecutor(max_workers=8) as ex:
-        return {x for x in ex.map(check, logins) if x}
-
-
 # Known big-company and government orgs (lowercase). Excluded because the company roadmap drives them even when they accept contributions.
 CORP_ORGS = {
     "microsoft", "azure", "azure-samples", "microsoftdocs", "dotnet", "google", "googleapis", "googlecloudplatform",
@@ -211,12 +197,50 @@ def recent_activity(full_name, since_iso, pages, until=None):
             v, d = max(cand)
             if v / n >= 0.5 and len(dom_authors[d]) >= 2:
                 corp_domain = d
+    top_login = max(counts, key=counts.get) if counts else None
     return {"commits": total, "contributors": len(counts), "eff": round(eff, 1),
             "top_share": round(max(counts.values()) / n, 2) if n else 0.0, "capped": capped,
-            "corp_domain": corp_domain}
+            "corp_domain": corp_domain, "top_login": top_login if top_login and "@" not in top_login else None}
 
 
 INSIDER = {"OWNER", "MEMBER", "COLLABORATOR"}
+
+
+ACADEMIC = re.compile(r"univers|institut|academ|college|school|research", re.I)
+COMPANY_NAME = re.compile(r"\b(inc\.?|llc|ltd\.?|gmbh|corp(oration)?|technologies|solutions|labs)\b", re.I)
+
+
+def _norm(x):
+    return re.sub(r"[^a-z0-9]", "", (x or "").lower())
+
+
+def is_company_run(owner, owner_type, top_login):
+    """Heuristic: is the repo run by a company that employs its main committer?
+
+    Only organizations with a website (blog) are considered. True when either
+      - the top committer's profile company contains the owner org name (e.g. company "@serverless" on serverless/*), or
+      - the org's display name or description reads like a company (Inc, Labs, Ltd, GmbH, Solutions, ...; the singular "Lab" is left out because university labs use it),
+        unless it also looks academic (university, institute, research, ...).
+    The API hides `is_verified` from non-members, so verified-org checks cannot work here.
+    """
+    if owner_type != "Organization":
+        return False
+    try:
+        org = api(f"/orgs/{owner}")
+    except urllib.error.HTTPError:
+        return False
+    if not (org.get("blog") or "").strip():
+        return False
+    text = f"{org.get('name') or ''} {org.get('description') or ''}"
+    if COMPANY_NAME.search(text) and not ACADEMIC.search(text):  # "Lab" at a university is not a company
+        return True
+    if top_login and len(_norm(owner)) >= 4:
+        try:
+            company = _norm(api(f"/users/{top_login}").get("company"))
+        except urllib.error.HTTPError:
+            return False
+        return bool(company) and _norm(owner) in company
+    return False
 
 
 def enrich(full_name):
@@ -317,7 +341,7 @@ def make_parser():
     p.add_argument("--min-commits", type=int, default=5,
                    help="exclude repos with fewer commits than this in the recent window, as effectively dead (default 5)")
     p.add_argument("--include-closed", action="store_true",
-                   help="also include corporate (verified org / known company / company-email) repos and repos closed to outside contributions")
+                   help="also include corporate (known company / company email / company-run) repos and repos closed to outside contributions")
     p.add_argument("--include-docs", action="store_true", help="also include docs / curated-list / tutorial repos")
     p.add_argument("--enrich", type=int, default=40,
                    help="re-score the top N by base score after also fetching PR acceptance and entry-level issues (default 40)")
@@ -343,9 +367,7 @@ def run(args):
     if not args.include_closed:
         n0 = len(repos)
         repos = [r for r in repos if r["owner"]["login"].lower() not in CORP_ORGS]
-        corp = verified_orgs(repos)
-        repos = [r for r in repos if r["owner"]["login"] not in corp]
-        print(f"Excluded {n0 - len(repos)} corporate repos (known company / verified org)", file=sys.stderr)
+        print(f"Excluded {n0 - len(repos)} corporate repos (known company list)", file=sys.stderr)
     print(f"Analyzing {len(repos)} candidates...", file=sys.stderr)
 
     with ThreadPoolExecutor(max_workers=8) as ex:
@@ -363,7 +385,8 @@ def run(args):
                      "open_issues": r["open_issues_count"], f"commits_{args.days}d": a["commits"],
                      f"contributors_{args.days}d": a["contributors"], "effective_contributors": a["eff"], "top_share": a["top_share"], "capped": a["capped"], "language": r["language"],
                      "url": r["html_url"], "description": (r.get("description") or "")[:200],
-                     "breakdown": parts, "base_score": s})
+                     "breakdown": parts, "base_score": s,
+                     "_owner": r["owner"]["login"], "_owner_type": r["owner"]["type"], "_top": a["top_login"]})
     if n_corp:
         print(f"Excluded {n_corp} repos whose commit authors concentrate on one company email domain", file=sys.stderr)
     rows.sort(key=lambda x: x["score"], reverse=True)
@@ -371,14 +394,19 @@ def run(args):
     print(f"Fetching PR acceptance and entry-level issues for the top {len(head)}...", file=sys.stderr)
     with ThreadPoolExecutor(max_workers=8) as ex:
         extras = list(ex.map(lambda r: enrich(r["repo"]), head))
+        company = list(ex.map(lambda r: is_company_run(r["_owner"], r["_owner_type"], r["_top"]), head)) \
+            if not args.include_closed else [False] * len(head)
     for r, x in zip(head, extras):
         r["accept"], r["external_prs"], r["entry_issues"] = x["accept"], x["ext_prs"], x["entry"]
         r["score"] = final_score(r["base_score"], x)
     if not args.include_closed:
         n0 = len(head)
-        kept = [(r, x) for r, x in zip(head, extras) if not is_closed_project(x)]
-        print(f"Excluded {n0 - len(kept)} repos closed to outside contributions", file=sys.stderr)
+        kept = [(r, x) for r, x, c in zip(head, extras, company) if not is_closed_project(x) and not c]
+        print(f"Excluded {n0 - len(kept)} repos closed to outsiders or run by a company", file=sys.stderr)
         head = [r for r, _ in kept]
+    for r in head:  # internal keys are not part of the output
+        for k in ("_owner", "_owner_type", "_top"):
+            r.pop(k, None)
     rows = sorted(head, key=lambda x: x["score"], reverse=True)[: args.top]
     return rows
 
@@ -404,7 +432,7 @@ def main():
           f"EFF = effective contributors (commit distribution over the last {d} days; one person doing everything ~ 1), "
           f"TOP1% = commit share of the top contributor. '+' = lower bound (hit the fetch limit of {args.pages * 100} commits). "
           f"Excluded: EFF > {args.max_contributors:g}, fewer than {args.min_commits} commits, docs/curated lists, "
-          f"corporate repos (known company list / verified org / company email domain), and repos closed to outside contributions.\n")
+          f"corporate repos (known company list / company email domain / company-run org), and repos closed to outside contributions.\n")
 
 
 if __name__ == "__main__":
