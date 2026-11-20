@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+tune_data.json
+.DS_Store
