@@ -11,40 +11,40 @@ Search, sort and filter all ranked repos on the website (updated weekly).
 The top repos are shown below. For the full list with search and filters, see the **[website](https://jounw.github.io/lfarc/)**.
 
 <!-- LFARC:START -->
-_As of 2026-11-20 · score v4 · based on commits in the last 90 days · top 30 after filtering a candidate pool of 1000_
+_As of 2026-11-20 · score v6 · based on commits in the last 90 days · top 30 after filtering a candidate pool of 1000_
 
 | # | Repo | Score | ★ | Effective contributors | Top contributor share | Outsider PR acceptance | Language |
 |--:|---|--:|--:|--:|--:|--:|---|
-| 1 | [exo-explore/exo](https://github.com/exo-explore/exo) | 85.0 | 48,508 | 1.0 | 99% | 98% | Python |
-| 2 | [rvm/rvm](https://github.com/rvm/rvm) | 69.8 | 5,188 | 1.0 | 100% | 86% | Shell |
-| 3 | [twpayne/chezmoi](https://github.com/twpayne/chezmoi) | 69.6 | 22,317 | 1.2 | 92% | 100% | Go |
-| 4 | [serverless/serverless](https://github.com/serverless/serverless) | 69.2 | 46,933 | 1.3 | 87% | 83% | JavaScript |
-| 5 | [bee-san/Ciphey](https://github.com/bee-san/Ciphey) | 68.7 | 21,776 | 1.2 | 91% | 100% | Rust |
-| 6 | [reactive-resume/reactive-resume](https://github.com/reactive-resume/reactive-resume) | 68.4 | 45,940 | 1.1 | 95% | 100% | TypeScript |
-| 7 | [tesseract-ocr/tesseract](https://github.com/tesseract-ocr/tesseract) | 67.6 | 77,602 | 1.6 | 79% | 92% | C++ |
-| 8 | [dockur/macos](https://github.com/dockur/macos) | 67.5 | 21,753 | 1.0 | 100% | 95% | Shell |
-| 9 | [mautic/mautic](https://github.com/mautic/mautic) | 67.5 | 11,057 | 1.3 | 89% | 96% | PHP |
-| 10 | [codewhale-hq/Codewhale](https://github.com/codewhale-hq/Codewhale) | 66.8 | 41,189 | 1.2 | 89% | 80% | Rust |
-| 11 | [stenzek/duckstation](https://github.com/stenzek/duckstation) | 66.7 | 11,028 | 1.1 | 96% | 96% | C++ |
-| 12 | [GyulyVGC/sniffnet](https://github.com/GyulyVGC/sniffnet) | 65.3 | 43,162 | 1.2 | 90% | 79% | Rust |
-| 13 | [fastlane/fastlane](https://github.com/fastlane/fastlane) | 65.3 | 42,409 | 1.6 | 78% | 100% | Ruby |
-| 14 | [MobSF/Mobile-Security-Framework-MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF) | 63.8 | 22,276 | 1.1 | 96% | 100% | Python |
-| 15 | [RustPython/RustPython](https://github.com/RustPython/RustPython) | 62.5 | 22,498 | 1.5 | 80% | 98% | Rust |
-| 16 | [git-bug/git-bug](https://github.com/git-bug/git-bug) | 62.1 | 10,876 | 1.1 | 95% | 85% | Go |
-| 17 | [ChatGPTNextWeb/NextChat](https://github.com/ChatGPTNextWeb/NextChat) | 61.9 | 88,982 | 1.2 | 90% | 65% | TypeScript |
-| 18 | [usablica/intro.js](https://github.com/usablica/intro.js) | 60.3 | 23,459 | 1.0 | 98% | 76% | TypeScript |
-| 19 | [dashingsoft/pyarmor](https://github.com/dashingsoft/pyarmor) | 59.2 | 5,229 | 1.1 | 97% | 94% | Python |
-| 20 | [hatoo/oha](https://github.com/hatoo/oha) | 58.7 | 10,705 | 1.4 | 85% | 93% | Rust |
-| 21 | [cheaper-inference/OmniRoute](https://github.com/cheaper-inference/OmniRoute) | 58.6 | 89,153 | 1.2 | 91% | 60% | TypeScript |
-| 22 | [unlayer/react-email-editor](https://github.com/unlayer/react-email-editor) | 58.5 | 5,259 | 1.2 | 91% | 88% | TypeScript |
-| 23 | [styled-components/styled-components](https://github.com/styled-components/styled-components) | 58.3 | 41,067 | 1.5 | 81% | 92% | TypeScript |
-| 24 | [Leaflet/Leaflet](https://github.com/Leaflet/Leaflet) | 58.3 | 45,961 | 1.7 | 77% | 83% | JavaScript |
-| 25 | [bluewave-labs/Checkmate](https://github.com/bluewave-labs/Checkmate) | 58.2 | 11,107 | 1.3 | 88% | 76% | TypeScript |
-| 26 | [ifixai-ai/iFixAi](https://github.com/ifixai-ai/iFixAi) | 57.8 | 46,350 | 1.5 | 82% | 96% | Python |
-| 27 | [coding-horror/basic-computer-games](https://github.com/coding-horror/basic-computer-games) | 57.2 | 11,097 | 1.3 | 88% | 96% | C# |
-| 28 | [FluentRead/FluentRead](https://github.com/FluentRead/FluentRead) | 57.0 | 11,067 | 1.0 | 99% | 73% | TypeScript |
-| 29 | [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 57.0 | 42,777 | 1.3 | 87% | 75% | Rust |
-| 30 | [domcyrus/rustnet](https://github.com/domcyrus/rustnet) | 56.6 | 5,249 | 1.2 | 91% | 80% | Rust |
+| 1 | [rvm/rvm](https://github.com/rvm/rvm) | 72.3 | 5,188 | 1.0 | 100% | 91% | Shell |
+| 2 | [frida/frida](https://github.com/frida/frida) | 67.7 | 22,865 | 1.0 | 100% | 77% | Meson |
+| 3 | [chartdb/chartdb](https://github.com/chartdb/chartdb) | 63.0 | 23,149 | 1.3 | 86% | 86% | TypeScript |
+| 4 | [gorhill/uBlock](https://github.com/gorhill/uBlock) | 59.5 | 69,515 | 1.0 | 100% | 73% | JavaScript |
+| 5 | [coding-horror/basic-computer-games](https://github.com/coding-horror/basic-computer-games) | 55.3 | 11,096 | 1.3 | 88% | 94% | C# |
+| 6 | [xifangczy/cat-catch](https://github.com/xifangczy/cat-catch) | 55.0 | 23,069 | 1.5 | 80% | 82% | JavaScript |
+| 7 | [tstack/lnav](https://github.com/tstack/lnav) | 54.7 | 10,811 | 1.2 | 91% | 80% | C++ |
+| 8 | [emanuele-f/PCAPdroid](https://github.com/emanuele-f/PCAPdroid) | 54.0 | 5,228 | 1.1 | 95% | 73% | Java |
+| 9 | [stenzek/duckstation](https://github.com/stenzek/duckstation) | 53.0 | 11,028 | 1.1 | 96% | 91% | C++ |
+| 10 | [asLody/VirtualApp](https://github.com/asLody/VirtualApp) | 52.9 | 11,136 | 1.2 | 90% | 72% | Java |
+| 11 | [unhappychoice/gitlogue](https://github.com/unhappychoice/gitlogue) | 52.7 | 5,280 | 1.0 | 98% | 83% | Rust |
+| 12 | [SpotX-Official/SpotX](https://github.com/SpotX-Official/SpotX) | 52.0 | 23,432 | 1.0 | 100% | 74% | PowerShell |
+| 13 | [Akryum/vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller) | 51.8 | 10,797 | 1.0 | 100% | 53% | TypeScript |
+| 14 | [Jeric-X/SyncClipboard](https://github.com/Jeric-X/SyncClipboard) | 51.6 | 5,248 | 1.0 | 100% | 86% | C# |
+| 15 | [Acly/krita-ai-diffusion](https://github.com/Acly/krita-ai-diffusion) | 51.3 | 10,920 | 1.0 | 100% | 62% | Python |
+| 16 | [HyNetworks/hysteria](https://github.com/HyNetworks/hysteria) | 50.9 | 22,965 | 1.2 | 90% | 68% | Go |
+| 17 | [domcyrus/rustnet](https://github.com/domcyrus/rustnet) | 50.9 | 5,249 | 1.2 | 91% | 80% | Rust |
+| 18 | [starfederation/datastar](https://github.com/starfederation/datastar) | 50.3 | 5,263 | 1.0 | 100% | 71% | TypeScript |
+| 19 | [binbyu/Reader](https://github.com/binbyu/Reader) | 50.3 | 5,197 | 1.4 | 82% | 87% | C++ |
+| 20 | [tinyplex/tinybase](https://github.com/tinyplex/tinybase) | 49.4 | 5,219 | 1.1 | 94% | 76% | TypeScript |
+| 21 | [phalcon/cphalcon](https://github.com/phalcon/cphalcon) | 48.2 | 10,816 | 1.0 | 99% | 67% | PHP |
+| 22 | [exelban/stats](https://github.com/exelban/stats) | 48.0 | 43,536 | 1.0 | 98% | 51% | Swift |
+| 23 | [bee-san/Ciphey](https://github.com/bee-san/Ciphey) | 48.0 | 21,776 | 1.2 | 91% | 75% | Rust |
+| 24 | [visit1985/mdp](https://github.com/visit1985/mdp) | 48.0 | 5,280 | 1.2 | 92% | 79% | C |
+| 25 | [grobidOrg/grobid](https://github.com/grobidOrg/grobid) | 47.9 | 5,234 | 1.2 | 92% | 75% | Java |
+| 26 | [angryip/ipscan](https://github.com/angryip/ipscan) | 47.6 | 5,207 | 1.3 | 88% | 73% | Java |
+| 27 | [PHPMailer/PHPMailer](https://github.com/PHPMailer/PHPMailer) | 47.3 | 22,343 | 1.6 | 79% | 68% | PHP |
+| 28 | [hatoo/oha](https://github.com/hatoo/oha) | 47.1 | 10,705 | 1.4 | 85% | 82% | Rust |
+| 29 | [be5invis/Iosevka](https://github.com/be5invis/Iosevka) | 46.7 | 23,308 | 1.9 | 68% | 86% | JavaScript |
+| 30 | [Sayi/poi-tl](https://github.com/Sayi/poi-tl) | 46.2 | 5,179 | 1.0 | 100% | 57% | Java |
 
 Effective contributors is based on the commit distribution (one person doing everything is ~1). See the Scoring section below for the score and filters. These are heuristics and can be wrong; treat as a guide.
 <!-- LFARC:END -->
