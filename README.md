@@ -4,7 +4,42 @@ Not another good-first-issue list. lfarc scores GitHub repos that **many people 
 
 ## This week's ranking
 <!-- LFARC:START -->
-_No snapshot yet. This section is filled in automatically after running `python3 snapshot.py`._
+_As of 2026-11-20 · score v4 · based on commits in the last 90 days · top 30 after filtering a candidate pool of 1000_
+
+| # | Repo | Score | ★ | Effective contributors | Top contributor share | Outsider PR acceptance | Language |
+|--:|---|--:|--:|--:|--:|--:|---|
+| 1 | [exo-explore/exo](https://github.com/exo-explore/exo) | 85.0 | 48,508 | 1.0 | 99% | 98% | Python |
+| 2 | [rvm/rvm](https://github.com/rvm/rvm) | 69.8 | 5,188 | 1.0 | 100% | 86% | Shell |
+| 3 | [twpayne/chezmoi](https://github.com/twpayne/chezmoi) | 69.6 | 22,317 | 1.2 | 92% | 100% | Go |
+| 4 | [serverless/serverless](https://github.com/serverless/serverless) | 69.2 | 46,933 | 1.3 | 87% | 83% | JavaScript |
+| 5 | [bee-san/Ciphey](https://github.com/bee-san/Ciphey) | 68.7 | 21,776 | 1.2 | 91% | 100% | Rust |
+| 6 | [reactive-resume/reactive-resume](https://github.com/reactive-resume/reactive-resume) | 68.4 | 45,940 | 1.1 | 95% | 100% | TypeScript |
+| 7 | [tesseract-ocr/tesseract](https://github.com/tesseract-ocr/tesseract) | 67.6 | 77,602 | 1.6 | 79% | 92% | C++ |
+| 8 | [dockur/macos](https://github.com/dockur/macos) | 67.5 | 21,753 | 1.0 | 100% | 95% | Shell |
+| 9 | [mautic/mautic](https://github.com/mautic/mautic) | 67.5 | 11,057 | 1.3 | 89% | 96% | PHP |
+| 10 | [codewhale-hq/Codewhale](https://github.com/codewhale-hq/Codewhale) | 66.8 | 41,189 | 1.2 | 89% | 80% | Rust |
+| 11 | [stenzek/duckstation](https://github.com/stenzek/duckstation) | 66.7 | 11,028 | 1.1 | 96% | 96% | C++ |
+| 12 | [GyulyVGC/sniffnet](https://github.com/GyulyVGC/sniffnet) | 65.3 | 43,162 | 1.2 | 90% | 79% | Rust |
+| 13 | [fastlane/fastlane](https://github.com/fastlane/fastlane) | 65.3 | 42,409 | 1.6 | 78% | 100% | Ruby |
+| 14 | [MobSF/Mobile-Security-Framework-MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF) | 63.8 | 22,276 | 1.1 | 96% | 100% | Python |
+| 15 | [RustPython/RustPython](https://github.com/RustPython/RustPython) | 62.5 | 22,498 | 1.5 | 80% | 98% | Rust |
+| 16 | [git-bug/git-bug](https://github.com/git-bug/git-bug) | 62.1 | 10,876 | 1.1 | 95% | 85% | Go |
+| 17 | [ChatGPTNextWeb/NextChat](https://github.com/ChatGPTNextWeb/NextChat) | 61.9 | 88,982 | 1.2 | 90% | 65% | TypeScript |
+| 18 | [usablica/intro.js](https://github.com/usablica/intro.js) | 60.3 | 23,459 | 1.0 | 98% | 76% | TypeScript |
+| 19 | [dashingsoft/pyarmor](https://github.com/dashingsoft/pyarmor) | 59.2 | 5,229 | 1.1 | 97% | 94% | Python |
+| 20 | [hatoo/oha](https://github.com/hatoo/oha) | 58.7 | 10,705 | 1.4 | 85% | 93% | Rust |
+| 21 | [cheaper-inference/OmniRoute](https://github.com/cheaper-inference/OmniRoute) | 58.6 | 89,153 | 1.2 | 91% | 60% | TypeScript |
+| 22 | [unlayer/react-email-editor](https://github.com/unlayer/react-email-editor) | 58.5 | 5,259 | 1.2 | 91% | 88% | TypeScript |
+| 23 | [styled-components/styled-components](https://github.com/styled-components/styled-components) | 58.3 | 41,067 | 1.5 | 81% | 92% | TypeScript |
+| 24 | [Leaflet/Leaflet](https://github.com/Leaflet/Leaflet) | 58.3 | 45,961 | 1.7 | 77% | 83% | JavaScript |
+| 25 | [bluewave-labs/Checkmate](https://github.com/bluewave-labs/Checkmate) | 58.2 | 11,107 | 1.3 | 88% | 76% | TypeScript |
+| 26 | [ifixai-ai/iFixAi](https://github.com/ifixai-ai/iFixAi) | 57.8 | 46,350 | 1.5 | 82% | 96% | Python |
+| 27 | [coding-horror/basic-computer-games](https://github.com/coding-horror/basic-computer-games) | 57.2 | 11,097 | 1.3 | 88% | 96% | C# |
+| 28 | [FluentRead/FluentRead](https://github.com/FluentRead/FluentRead) | 57.0 | 11,067 | 1.0 | 99% | 73% | TypeScript |
+| 29 | [tinyhumansai/openhuman](https://github.com/tinyhumansai/openhuman) | 57.0 | 42,777 | 1.3 | 87% | 75% | Rust |
+| 30 | [domcyrus/rustnet](https://github.com/domcyrus/rustnet) | 56.6 | 5,249 | 1.2 | 91% | 80% | Rust |
+
+Effective contributors is based on the commit distribution (one person doing everything is ~1). See the Scoring section below for the score and filters. These are heuristics and can be wrong; treat as a guide.
 <!-- LFARC:END -->
 
 ## Usage
