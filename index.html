@@ -100,7 +100,7 @@
     <ul>
       <li><b>Scarcity</b> <code>1 / (1 + (EFF − 1) / 2.5)</code> multiplies everything, so many contributors means a low score no matter how many stars.</li>
       <li><b>Base</b> <code>100 × scarcity × (0.4 + 0.4 × popularity + 0.2 × demand)</code>, where popularity and demand are smoothly saturating functions of stars and issues per effective contributor.</li>
-      <li><b>Outsider PR acceptance</b> scales the score by <code>0.25 + 0.75 × acceptance</code>. In a backtest, past acceptance was the best predictor of future acceptance.</li>
+      <li><b>Outsider PR acceptance</b> is shown for information and only matters when it is zero: if no outsider PR was merged the score is cut (or the repo is dropped when there were 5 or more).</li>
       <li><b>Crowding</b>: more than 5 outsider PR authors in the recent window lowers the score (25 authors halve it), because many people are already contributing.</li>
       <li><b>Entry issues</b> (<code>help wanted</code> + <code>good first issue</code>): 5 or more gives a +10% bonus. Research projects get a small +5%.</li>
       <li>Excluded: dead repos, docs / guides / example collections, company-run repos, repos closed to outsiders, PR backlogs (more than 50 open PRs and more open than merged in the window), and repos with more than 1,000 all-time contributors.</li>

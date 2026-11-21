@@ -19,7 +19,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 API = "https://api.github.com"
-SCORE_VERSION = 6  # Bump whenever the scoring formula or filters change (recorded in snapshots)
+SCORE_VERSION = 7  # Bump whenever the scoring formula or filters change (recorded in snapshots)
 
 
 def get_token():
@@ -300,8 +300,7 @@ def is_research(topics, description, homepage, academic_owner):
                 or RESEARCH_HOME.search(homepage or ""))
 
 
-ACCEPT_PRIOR = 0.4        # assumed outsider acceptance when there is no evidence
-ACCEPT_PRIOR_WEIGHT = 3   # the prior counts as this many PRs
+ZERO_ACCEPT_FACTOR = 0.4  # score multiplier when outsiders sent a few PRs and none was merged
 
 
 def enrich(full_name, core, since_iso, limits=None):
@@ -311,8 +310,6 @@ def enrich(full_name, core, since_iso, limits=None):
                       OWNER/MEMBER/COLLABORATOR and not a hidden maintainer (a dominant committer whose own PRs are
                       nearly always merged; people whose org membership is private show up as plain contributors,
                       which used to inflate this). Needs >= 3 PRs from >= 3 authors.
-    accept_est:       the same ratio shrunk toward the prior (ACCEPT_PRIOR) so that 0/3 or 3/3 is not taken at
-                      face value; equals the prior when there is not enough data. This is what the score uses.
     crowd:            distinct outsider authors whose PRs were closed or merged inside the recent window: how many
                       other people are already contributing (competition).
     pr_authors:       distinct authors of PRs merged inside the window (informational).
@@ -322,7 +319,7 @@ def enrich(full_name, core, since_iso, limits=None):
     reason:           why the repo should be dropped ("backlog", "crowded", "closed"), or None.
     limits = (max_open_prs, max_all_contributors); None disables the red-ocean checks.
     """
-    x = {"accept": None, "accept_est": ACCEPT_PRIOR, "ext_prs": 0, "ext_authors": 0, "closed_prs": 0, "crowd": 0, "pr_authors": 0,
+    x = {"accept": None, "ext_prs": 0, "ext_authors": 0, "closed_prs": 0, "crowd": 0, "pr_authors": 0,
          "merged_recent": 0, "open_prs": None, "contributors_all": None, "entry": 0, "reason": None}
     core = {c.lower() for c in core or []}
     closed = []
@@ -349,9 +346,7 @@ def enrich(full_name, core, since_iso, limits=None):
     ext = [p for p in human if p.get("author_association") not in INSIDER and login(p) not in core]
     x["closed_prs"], x["ext_prs"], x["ext_authors"] = len(human), len(ext), len({login(p) for p in ext})
     if x["ext_prs"] >= 3 and x["ext_authors"] >= 3:
-        merged_ext = sum(1 for p in ext if p.get("merged_at"))
-        x["accept"] = merged_ext / x["ext_prs"]
-        x["accept_est"] = (merged_ext + ACCEPT_PRIOR * ACCEPT_PRIOR_WEIGHT) / (x["ext_prs"] + ACCEPT_PRIOR_WEIGHT)
+        x["accept"] = sum(1 for p in ext if p.get("merged_at")) / x["ext_prs"]
     # ISO-8601 UTC strings compare chronologically
     x["crowd"] = len({login(p) for p in ext if (p.get("closed_at") or "") >= since_iso})
     merged_recent = [p for p in human if (p.get("merged_at") or "") >= since_iso]
@@ -395,10 +390,10 @@ def enrich(full_name, core, since_iso, limits=None):
 def is_closed_project(x):
     """Outsiders effectively cannot contribute.
 
-    Either under 20% of at least 5 outsider PRs got merged, or there are plenty of closed PRs (>= 20) but fewer
+    Either none of at least 5 outsider PRs got merged, or there are plenty of closed PRs (>= 20) but fewer
     than two distinct outsider authors among them, i.e. the PR flow is the maintainers' own.
     """
-    if x["accept"] is not None and x["ext_prs"] >= 5 and x["accept"] < 0.2:
+    if x["accept"] == 0 and x["ext_prs"] >= 5:
         return True
     return x["closed_prs"] >= 20 and x["ext_authors"] < 2
 
@@ -409,15 +404,13 @@ def crowd_factor(n):
 
 
 def final_score(base, extra):
-    """base x acceptance factor (0.25-1.0) x crowd factor x entry-issue bonus (up to +10%) x research bonus (+5%).
+    """base x crowd factor x entry-issue bonus (up to +10%) x research bonus (+5%), x0.4 if no outsider PR was merged.
 
-    factor = 0.25 + 0.75 * acceptance, where acceptance is the outsider merge ratio shrunk toward 0.4
-    (small samples move it little; with fewer than 3 PRs or 3 authors it is exactly 0.4).
-    (tune.py backtest: past acceptance was the best predictor of future acceptance, and the top
-     of a scarcity-only ranking was actually accepted less often -> the factor is kept strong)
+    The outsider acceptance rate is deliberately ignored unless it is zero: any merged outsider PR shows the door is
+    open, and the exact ratio says more about who happened to send PRs than about the project. Zero of 3-4 PRs
+    costs ZERO_ACCEPT_FACTOR; zero of 5 or more removes the repo (see is_closed_project).
     """
-    acc = extra["accept_est"] if "accept_est" in extra else (ACCEPT_PRIOR if extra["accept"] is None else extra["accept"])
-    accept_factor = 0.25 + 0.75 * acc
+    accept_factor = ZERO_ACCEPT_FACTOR if extra["accept"] == 0 else 1.0
     entry_bonus = 1 + 0.1 * min(1.0, extra["entry"] / 5)
     research_bonus = RESEARCH_BONUS if extra.get("research") else 1.0
     return round(base * accept_factor * crowd_factor(extra.get("crowd", 0)) * entry_bonus * research_bonus, 1)
@@ -588,9 +581,10 @@ def main():
               f"{show(r['open_prs']):>7} {show(r['contributors_all']):>11} {r['outsider_pr_authors']:>5} {str(r[f'commits_{d}d']) + plus:>10} "
               f"{r['effective_contributors']:>5} {round(r['top_share'] * 100):>5} "
               f"{(str(round(r['accept'] * 100)) + '%') if r['accept'] is not None else '?':>6} {r['entry_issues']:>6}  {r['language'] or '-'}")
-    print(f"\nScore = scarcity(1/(1+(EFF-1)/2.5)) x (0.4 + 0.4*popularity(stars) + 0.2*issue demand) x outsider-PR acceptance factor "
-          f"(ACCEPT, shrunk toward 0.4 for small samples; '?' = not enough outsider PRs/authors) x crowd factor (CROWD = outsider PR authors in the last {d} days; "
-          f"no penalty up to 5) x entry-issue bonus (HW/GFI) x research bonus (+5%). "
+    print(f"\nScore = scarcity(1/(1+(EFF-1)/2.5)) x (0.4 + 0.4*popularity(stars) + 0.2*issue demand) x crowd factor "
+          f"(CROWD = outsider PR authors in the last {d} days; no penalty up to 5) x entry-issue bonus (HW/GFI) x research bonus (+5%). "
+          f"ACCEPT (outsider PRs merged) is informational and only matters at 0%: x0.4, or excluded with 5+ outsider PRs; "
+          f"'?' = not enough outsider PRs/authors. "
           f"EFF = effective contributors from a commit sample spread over the last {d} days, "
           f"TOP1% = commit share of the top contributor, ISSUES excludes pull requests, OPEN_PR excludes bots. "
           f"'+' = lower bound (the window holds more than the {args.pages * 100} sampled commits). "

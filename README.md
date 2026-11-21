@@ -60,7 +60,7 @@ The default star range is 2,500 and up with no upper cap (effectively 1,000,000)
 
 Token: the `GITHUB_TOKEN` environment variable or `gh auth login` (without a token the rate limit is very low).
 
-## Scoring (0-100): burden per effective contributor x how welcome and uncrowded outsiders are
+## Scoring (0-100): burden per effective contributor x how uncrowded it is
 
 Effective contributors (EFF) = `1 / sum(commit share^2)` over the last N days (default 90), bots excluded. If one person does 90% of the commits and everyone else only fixes typos, EFF is about 1.2, so the project is treated as essentially a one-person project. Commits are sampled across the whole window (not just the latest pages), so a very active repo is not judged on its last few days.
 
@@ -68,8 +68,8 @@ Effective contributors (EFF) = `1 / sum(commit share^2)` over the last N days (d
    - scarcity = `1 / (1 + (EFF - 1) / 2.5)` (EFF 1 -> 1.0, 2 -> 0.71, 4 -> 0.45, 6 -> 0.33, 10 -> 0.22). It is **multiplicative**, so a repo with many contributors scores low no matter how many stars it has.
    - popularity = `sat(log(stars): 500 -> 0, 50,000 -> 1)`, demand = `sat(log(issues / EFF): 1 -> 0, 100 -> 1)`, where `sat(x) = 1 - e^(-x)` saturates smoothly so scores never tie at a cap. Issues exclude pull requests (GitHub's `open_issues_count` includes them).
 2. **Second stage** (only the top `--enrich` repos by base score; up to about 8 API calls per repo), from the 200 most recently closed PRs and the open PRs:
-   - **Outsider PR acceptance** (ACCEPT): the merge ratio of outsider PRs. An outsider is not a bot, not an OWNER/MEMBER/COLLABORATOR, and not a hidden maintainer (a dominant committer whose own PRs are nearly always merged; people with private org membership look like plain contributors and used to inflate this number). The ratio is shrunk toward 0.4 so small samples such as 0/3 or 3/3 are not taken at face value; with fewer than 3 PRs or 3 authors it is exactly 0.4 (shown as `?`). Factor: `0.25 + 0.75 * acceptance`.
-     - In the backtest (`tune.py`, 94 samples) past acceptance was the best predictor of future acceptance (AUC 0.72), and the top 25% of a scarcity-only ranking was accepted only 30% of the time versus 52% for a random repo, so the factor is kept strong.
+   - **Outsider PR acceptance** (ACCEPT) is shown for information and **only matters when it is zero**. An outsider is not a bot, not an OWNER/MEMBER/COLLABORATOR, and not a hidden maintainer (a dominant committer whose own PRs are nearly always merged). Any merged outsider PR shows the door is open, so the exact ratio is ignored. If none of 3-4 outsider PRs was merged the score is multiplied by 0.4; none of 5 or more excludes the repo. With fewer than 3 PRs or 3 authors there is no verdict (`?`).
+     - Earlier versions scaled the score by this ratio (in a small backtest, `tune.py`, past acceptance predicted future acceptance, AUC 0.72). That was dropped on purpose: it pushed down projects that merge outsider work but also reject a lot of it.
    - **Crowding** (CROWD): the number of distinct outsiders whose PRs were closed or merged in the window. Up to 5 costs nothing; beyond that the factor is `1 / (1 + (n - 5) / 20)` (25 authors halve the score). Many people already contributing means your contribution matters less.
    - **Entry-level issues** (HW/GFI): the number of open `help wanted` + `good first issue` issues. 5 or more gives a +10% bonus.
    - **Research projects** get a small +5%: research/science topics or wording, an arXiv/DOI/university homepage, or an academic owner org.
@@ -82,7 +82,7 @@ Excluded:
   - Owners on the known big-company / government list (`CORP_ORGS` in `lfarc.py`: microsoft, google, meta, aws, nvidia, openai, anthropics, android, NSA, ...). Add or edit entries in `lfarc.py`.
   - Organizations that look company-run (only orgs with a website): the org's name or description reads like a company (Inc, Labs, Ltd, GmbH, Solutions, ...; academic wording excluded), or the top committer's profile company contains the org name (for example company `@serverless` on `serverless/*`). GitHub hides `is_verified` from non-members, so verified-org checks are not used.
   - Repos where 50%+ of recent commit authors share one company email domain (personal mail and universities excluded) with 2+ authors, i.e. company-driven projects.
-  - Closed to outsiders: under 20% of at least 5 outsider PRs merged, or 20+ closed PRs with fewer than two outsider authors.
+  - Closed to outsiders: none of at least 5 outsider PRs merged, or 20+ closed PRs with fewer than two outsider authors.
   - PR backlog: more than `--max-open-prs` (default 50) open human PRs **and** more open than were merged in the window (a queue of three months or more). Bot PRs are not counted.
   - `--max-all-contributors` (default 1000): more all-time contributors than this.
 
