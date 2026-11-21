@@ -11,40 +11,40 @@ Search, sort and filter all ranked repos on the website (updated weekly).
 The top repos are shown below. For the full list with search and filters, see the **[website](https://jounw.github.io/lfarc/)**.
 
 <!-- LFARC:START -->
-_As of 2026-11-21 · score v7 · based on commits in the last 90 days · top 30 after filtering a candidate pool of 2000_
+_As of 2026-11-21 · score v8 · based on commits in the last 90 days · top 30 after filtering a candidate pool of 2000_
 
 | # | Repo | Score | ★ | Effective contributors | Top contributor share | Outsider PR acceptance | Language |
 |--:|---|--:|--:|--:|--:|--:|---|
-| 1 | [abi/screenshot-to-code](https://github.com/abi/screenshot-to-code) | 86.2 | 81,309 | 1.0 | 100% | 29% | Python |
-| 2 | [dcloudio/uni-app](https://github.com/dcloudio/uni-app) | 84.7 | 41,695 | 1.0 | 100% | 22% | JavaScript |
-| 3 | [lively-community/lively](https://github.com/lively-community/lively) | 84.4 | 20,167 | 1.0 | 100% | 42% | C# |
-| 4 | [frida/frida](https://github.com/frida/frida) | 82.6 | 22,868 | 1.0 | 100% | 77% | Meson |
-| 5 | [mikf/gallery-dl](https://github.com/mikf/gallery-dl) | 80.8 | 20,582 | 1.0 | 100% | 59% | Python |
-| 6 | [Akryum/vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller) | 80.3 | 10,797 | 1.0 | 100% | 53% | TypeScript |
-| 7 | [nwjs/nw.js](https://github.com/nwjs/nw.js) | 80.1 | 41,144 | 1.0 | 100% | 42% | JavaScript |
-| 8 | [bannedbook/fanqiang](https://github.com/bannedbook/fanqiang) | 80.1 | 57,991 | 1.0 | 100% | 23% | Kotlin |
-| 9 | [uvdesk/community-skeleton](https://github.com/uvdesk/community-skeleton) | 80.0 | 19,650 | 1.0 | 100% | 71% | CSS |
-| 10 | [chen08209/FlClash](https://github.com/chen08209/FlClash) | 79.5 | 64,461 | 1.0 | 100% | ? | Dart |
-| 11 | [rvm/rvm](https://github.com/rvm/rvm) | 77.9 | 5,188 | 1.0 | 100% | 91% | Shell |
-| 12 | [valeriansaliou/sonic](https://github.com/valeriansaliou/sonic) | 77.9 | 21,389 | 1.1 | 95% | 75% | Rust |
-| 13 | [koala73/worldmonitor](https://github.com/koala73/worldmonitor) | 77.8 | 91,001 | 1.1 | 97% | ? | TypeScript |
-| 14 | [Usagi-org/ai-goofish-monitor](https://github.com/Usagi-org/ai-goofish-monitor) | 77.8 | 20,306 | 1.0 | 100% | 69% | Python |
-| 15 | [AppIntro/AppIntro](https://github.com/AppIntro/AppIntro) | 77.0 | 10,564 | 1.0 | 100% | 86% | Kotlin |
-| 16 | [valinet/ExplorerPatcher](https://github.com/valinet/ExplorerPatcher) | 76.9 | 34,376 | 1.1 | 96% | 35% | C |
-| 17 | [SagerNet/sing-box](https://github.com/SagerNet/sing-box) | 76.8 | 40,173 | 1.0 | 99% | 15% | Go |
-| 18 | [hackjutsu/Lepton](https://github.com/hackjutsu/Lepton) | 76.7 | 10,348 | 1.0 | 100% | 85% | JavaScript |
-| 19 | [nginx-proxy/nginx-proxy](https://github.com/nginx-proxy/nginx-proxy) | 76.2 | 19,947 | 1.0 | 100% | 65% | Python |
-| 20 | [beefproject/beef](https://github.com/beefproject/beef) | 76.1 | 11,098 | 1.0 | 100% | 34% | JavaScript |
-| 21 | [astrid-runtime/astrid](https://github.com/astrid-runtime/astrid) | 76.0 | 10,290 | 1.1 | 95% | 92% | Rust |
-| 22 | [conwnet/github1s](https://github.com/conwnet/github1s) | 75.8 | 23,307 | 1.0 | 100% | 20% | TypeScript |
-| 23 | [exelban/stats](https://github.com/exelban/stats) | 75.8 | 43,543 | 1.0 | 98% | 51% | Swift |
-| 24 | [newsnext/newsnow](https://github.com/newsnext/newsnow) | 75.7 | 22,534 | 1.0 | 100% | 35% | TypeScript |
-| 25 | [stoplightio/prism](https://github.com/stoplightio/prism) | 75.7 | 5,072 | 1.0 | 100% | 50% | TypeScript |
-| 26 | [AykutSarac/jsoncrack.com](https://github.com/AykutSarac/jsoncrack.com) | 75.6 | 44,603 | 1.0 | 100% | 25% | TypeScript |
-| 27 | [lyswhut/lx-music-mobile](https://github.com/lyswhut/lx-music-mobile) | 75.1 | 19,490 | 1.0 | 100% | 47% | TypeScript |
-| 28 | [spacedriveapp/spacedrive](https://github.com/spacedriveapp/spacedrive) | 75.0 | 39,570 | 1.0 | 98% | 72% | Rust |
-| 29 | [mksglu/context-mode](https://github.com/mksglu/context-mode) | 75.0 | 34,344 | 1.0 | 100% | ? | JavaScript |
-| 30 | [gorhill/uBlock](https://github.com/gorhill/uBlock) | 74.8 | 69,524 | 1.0 | 100% | 73% | JavaScript |
+| 1 | [lively-community/lively](https://github.com/lively-community/lively) | 84.4 | 20,168 | 1.0 | 100% | 42% | C# |
+| 2 | [frida/frida](https://github.com/frida/frida) | 82.6 | 22,868 | 1.0 | 100% | 77% | Meson |
+| 3 | [mikf/gallery-dl](https://github.com/mikf/gallery-dl) | 80.8 | 20,585 | 1.0 | 100% | 59% | Python |
+| 4 | [Akryum/vue-virtual-scroller](https://github.com/Akryum/vue-virtual-scroller) | 80.3 | 10,797 | 1.0 | 100% | 53% | TypeScript |
+| 5 | [nwjs/nw.js](https://github.com/nwjs/nw.js) | 80.1 | 41,144 | 1.0 | 100% | 42% | JavaScript |
+| 6 | [bannedbook/fanqiang](https://github.com/bannedbook/fanqiang) | 80.1 | 57,992 | 1.0 | 100% | 23% | Kotlin |
+| 7 | [chen08209/FlClash](https://github.com/chen08209/FlClash) | 79.5 | 64,463 | 1.0 | 100% | ? | Dart |
+| 8 | [rvm/rvm](https://github.com/rvm/rvm) | 77.9 | 5,188 | 1.0 | 100% | 91% | Shell |
+| 9 | [valeriansaliou/sonic](https://github.com/valeriansaliou/sonic) | 77.9 | 21,389 | 1.1 | 95% | 75% | Rust |
+| 10 | [koala73/worldmonitor](https://github.com/koala73/worldmonitor) | 77.8 | 91,001 | 1.1 | 97% | ? | TypeScript |
+| 11 | [Usagi-org/ai-goofish-monitor](https://github.com/Usagi-org/ai-goofish-monitor) | 77.8 | 20,308 | 1.0 | 100% | 69% | Python |
+| 12 | [valinet/ExplorerPatcher](https://github.com/valinet/ExplorerPatcher) | 76.9 | 34,376 | 1.1 | 96% | 35% | C |
+| 13 | [AppIntro/AppIntro](https://github.com/AppIntro/AppIntro) | 76.9 | 10,564 | 1.0 | 100% | 86% | Kotlin |
+| 14 | [SagerNet/sing-box](https://github.com/SagerNet/sing-box) | 76.8 | 40,173 | 1.0 | 99% | 15% | Go |
+| 15 | [hackjutsu/Lepton](https://github.com/hackjutsu/Lepton) | 76.7 | 10,348 | 1.0 | 100% | 85% | JavaScript |
+| 16 | [nginx-proxy/nginx-proxy](https://github.com/nginx-proxy/nginx-proxy) | 76.2 | 19,947 | 1.0 | 100% | 65% | Python |
+| 17 | [beefproject/beef](https://github.com/beefproject/beef) | 76.1 | 11,098 | 1.0 | 100% | 34% | JavaScript |
+| 18 | [astrid-runtime/astrid](https://github.com/astrid-runtime/astrid) | 76.0 | 10,290 | 1.1 | 95% | 92% | Rust |
+| 19 | [conwnet/github1s](https://github.com/conwnet/github1s) | 75.8 | 23,307 | 1.0 | 100% | 20% | TypeScript |
+| 20 | [exelban/stats](https://github.com/exelban/stats) | 75.8 | 43,544 | 1.0 | 98% | 51% | Swift |
+| 21 | [newsnext/newsnow](https://github.com/newsnext/newsnow) | 75.7 | 22,534 | 1.0 | 100% | 35% | TypeScript |
+| 22 | [AykutSarac/jsoncrack.com](https://github.com/AykutSarac/jsoncrack.com) | 75.6 | 44,603 | 1.0 | 100% | 25% | TypeScript |
+| 23 | [lyswhut/lx-music-mobile](https://github.com/lyswhut/lx-music-mobile) | 75.1 | 19,491 | 1.0 | 100% | 47% | TypeScript |
+| 24 | [gorhill/uBlock](https://github.com/gorhill/uBlock) | 74.8 | 69,524 | 1.0 | 100% | 73% | JavaScript |
+| 25 | [PRQL/prql](https://github.com/PRQL/prql) | 74.7 | 10,948 | 1.2 | 92% | ? | Rust |
+| 26 | [camel-ai/owl](https://github.com/camel-ai/owl) | 74.6 | 20,195 | 1.0 | 100% | 65% | Python |
+| 27 | [tporadowski/redis](https://github.com/tporadowski/redis) | 74.5 | 10,291 | 1.0 | 100% | 67% | C |
+| 28 | [mosra/magnum](https://github.com/mosra/magnum) | 74.2 | 5,235 | 1.0 | 99% | 31% | C++ |
+| 29 | [ntdevlabs/tiny11builder](https://github.com/ntdevlabs/tiny11builder) | 73.3 | 22,381 | 1.0 | 100% | 24% | C# |
+| 30 | [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts) | 73.0 | 65,266 | 1.1 | 94% | 52% | CSS |
 
 Effective contributors is based on the commit distribution (one person doing everything is ~1). See the Scoring section below for the score and filters. These are heuristics and can be wrong; treat as a guide.
 <!-- LFARC:END -->

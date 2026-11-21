@@ -1,8 +1,8 @@
 {
  "meta": {
-  "generated_at": "2026-11-21T04:26:59Z",
-  "score_version": 7,
-  "count": 198,
+  "generated_at": "2026-11-21T05:27:51Z",
+  "score_version": 8,
+  "count": 189,
   "params": {
    "language": null,
    "topic": null,
@@ -24,65 +24,9 @@
  },
  "repos": [
   {
-   "repo": "abi/screenshot-to-code",
-   "score": 86.2,
-   "stars": 81309,
-   "forks": 9949,
-   "open_issues": 126,
-   "commits_90d": 6,
-   "contributors_90d": 1,
-   "effective_contributors": 1.0,
-   "top_share": 1.0,
-   "capped": false,
-   "language": "Python",
-   "url": "https://github.com/abi/screenshot-to-code",
-   "description": "Drop in a screenshot and convert it to clean code (HTML/Tailwind/React/Vue)",
-   "breakdown": {
-    "stars_per": 81309,
-    "issues_per": 126.0
-   },
-   "base_score": 79.8,
-   "open_prs": 24,
-   "contributors_all": 29,
-   "merged_pr_authors": 0,
-   "outsider_pr_authors": 2,
-   "accept": 0.29411764705882354,
-   "external_prs": 119,
-   "entry_issues": 4,
-   "research": false
-  },
-  {
-   "repo": "dcloudio/uni-app",
-   "score": 84.7,
-   "stars": 41695,
-   "forks": 3711,
-   "open_issues": 706,
-   "commits_90d": 300,
-   "contributors_90d": 1,
-   "effective_contributors": 1.0,
-   "top_share": 1.0,
-   "capped": true,
-   "language": "JavaScript",
-   "url": "https://github.com/dcloudio/uni-app",
-   "description": "A cross-platform framework using Vue.js",
-   "breakdown": {
-    "stars_per": 41695,
-    "issues_per": 706.0
-   },
-   "base_score": 79.9,
-   "open_prs": 17,
-   "contributors_all": 273,
-   "merged_pr_authors": 2,
-   "outsider_pr_authors": 2,
-   "accept": 0.2222222222222222,
-   "external_prs": 63,
-   "entry_issues": 3,
-   "research": false
-  },
-  {
    "repo": "lively-community/lively",
    "score": 84.4,
-   "stars": 20167,
+   "stars": 20168,
    "forks": 1424,
    "open_issues": 412,
    "commits_90d": 15,
@@ -94,7 +38,7 @@
    "url": "https://github.com/lively-community/lively",
    "description": "Free and open-source software that allows users to set animated desktop wallpapers and screensavers powered by WinUI 3.",
    "breakdown": {
-    "stars_per": 20167,
+    "stars_per": 20168,
     "issues_per": 412.0
    },
    "base_score": 76.7,
@@ -138,7 +82,7 @@
   {
    "repo": "mikf/gallery-dl",
    "score": 80.8,
-   "stars": 20582,
+   "stars": 20585,
    "forks": 1535,
    "open_issues": 1009,
    "commits_90d": 12,
@@ -150,7 +94,7 @@
    "url": "https://github.com/mikf/gallery-dl",
    "description": "Command-line program to download image galleries and collections from several image hosting sites",
    "breakdown": {
-    "stars_per": 20582,
+    "stars_per": 20585,
     "issues_per": 1009.0
    },
    "base_score": 77.7,
@@ -222,8 +166,8 @@
   {
    "repo": "bannedbook/fanqiang",
    "score": 80.1,
-   "stars": 57991,
-   "forks": 8851,
+   "stars": 57992,
+   "forks": 8852,
    "open_issues": 327,
    "commits_90d": 8,
    "contributors_90d": 1,
@@ -234,7 +178,7 @@
    "url": "https://github.com/bannedbook/fanqiang",
    "description": "翻墙-科学上网",
    "breakdown": {
-    "stars_per": 57991,
+    "stars_per": 57992,
     "issues_per": 327.0
    },
    "base_score": 80.1,
@@ -248,37 +192,9 @@
    "research": false
   },
   {
-   "repo": "uvdesk/community-skeleton",
-   "score": 80.0,
-   "stars": 19650,
-   "forks": 560,
-   "open_issues": 75,
-   "commits_90d": 6,
-   "contributors_90d": 1,
-   "effective_contributors": 1.0,
-   "top_share": 1.0,
-   "capped": false,
-   "language": "CSS",
-   "url": "https://github.com/uvdesk/community-skeleton",
-   "description": "UVdesk Open Source Community Helpdesk is a comprehensive ticketing support system designed for everyone, offering robust features to streamline customer support and collaboration.",
-   "breakdown": {
-    "stars_per": 19650,
-    "issues_per": 75.0
-   },
-   "base_score": 74.1,
-   "open_prs": 9,
-   "contributors_all": 46,
-   "merged_pr_authors": 0,
-   "outsider_pr_authors": 0,
-   "accept": 0.7058823529411765,
-   "external_prs": 119,
-   "entry_issues": 4,
-   "research": false
-  },
-  {
    "repo": "chen08209/FlClash",
    "score": 79.5,
-   "stars": 64461,
+   "stars": 64463,
    "forks": 4284,
    "open_issues": 171,
    "commits_90d": 162,
@@ -290,7 +206,7 @@
    "url": "https://github.com/chen08209/FlClash",
    "description": "A multi-platform proxy client based on ClashMeta,simple and easy to use, open-source and ad-free.",
    "breakdown": {
-    "stars_per": 64461,
+    "stars_per": 64463,
     "issues_per": 171.0
    },
    "base_score": 79.5,
@@ -390,8 +306,8 @@
   {
    "repo": "Usagi-org/ai-goofish-monitor",
    "score": 77.8,
-   "stars": 20306,
-   "forks": 3287,
+   "stars": 20308,
+   "forks": 3288,
    "open_issues": 45,
    "commits_90d": 9,
    "contributors_90d": 1,
@@ -402,7 +318,7 @@
    "url": "https://github.com/Usagi-org/ai-goofish-monitor",
    "description": "基于 Playwright 和AI实现的闲鱼多任务实时/定时监控与智能分析系统，配备了功能完善的后台管理UI。帮助用户从闲鱼海量商品中，找到心仪产品。",
    "breakdown": {
-    "stars_per": 20306,
+    "stars_per": 20308,
     "issues_per": 45.0
    },
    "base_score": 73.4,
@@ -413,34 +329,6 @@
    "accept": 0.6904761904761905,
    "external_prs": 42,
    "entry_issues": 3,
-   "research": false
-  },
-  {
-   "repo": "AppIntro/AppIntro",
-   "score": 77.0,
-   "stars": 10564,
-   "forks": 1760,
-   "open_issues": 32,
-   "commits_90d": 18,
-   "contributors_90d": 1,
-   "effective_contributors": 1.0,
-   "top_share": 1.0,
-   "capped": false,
-   "language": "Kotlin",
-   "url": "https://github.com/AppIntro/AppIntro",
-   "description": "Make a cool intro for your Android app.",
-   "breakdown": {
-    "stars_per": 10564,
-    "issues_per": 32.0
-   },
-   "base_score": 70.0,
-   "open_prs": 11,
-   "contributors_all": 142,
-   "merged_pr_authors": 1,
-   "outsider_pr_authors": 1,
-   "accept": 0.8571428571428571,
-   "external_prs": 14,
-   "entry_issues": 7,
    "research": false
   },
   {
@@ -469,6 +357,34 @@
    "accept": 0.35,
    "external_prs": 60,
    "entry_issues": 1,
+   "research": false
+  },
+  {
+   "repo": "AppIntro/AppIntro",
+   "score": 76.9,
+   "stars": 10564,
+   "forks": 1760,
+   "open_issues": 31,
+   "commits_90d": 19,
+   "contributors_90d": 1,
+   "effective_contributors": 1.0,
+   "top_share": 1.0,
+   "capped": false,
+   "language": "Kotlin",
+   "url": "https://github.com/AppIntro/AppIntro",
+   "description": "Make a cool intro for your Android app.",
+   "breakdown": {
+    "stars_per": 10564,
+    "issues_per": 31.0
+   },
+   "base_score": 69.9,
+   "open_prs": 11,
+   "contributors_all": 142,
+   "merged_pr_authors": 1,
+   "outsider_pr_authors": 1,
+   "accept": 0.8571428571428571,
+   "external_prs": 14,
+   "entry_issues": 7,
    "research": false
   },
   {
@@ -588,7 +504,7 @@
    "score": 76.0,
    "stars": 10290,
    "forks": 145,
-   "open_issues": 269,
+   "open_issues": 270,
    "commits_90d": 218,
    "contributors_90d": 5,
    "effective_contributors": 1.1,
@@ -599,10 +515,10 @@
    "description": "Astrid is a portable, capability-secure operating system for composable software.",
    "breakdown": {
     "stars_per": 9355,
-    "issues_per": 244.5
+    "issues_per": 245.5
    },
    "base_score": 70.4,
-   "open_prs": 79,
+   "open_prs": 78,
    "contributors_all": 8,
    "merged_pr_authors": 5,
    "outsider_pr_authors": 4,
@@ -642,7 +558,7 @@
   {
    "repo": "exelban/stats",
    "score": 75.8,
-   "stars": 43543,
+   "stars": 43544,
    "forks": 1637,
    "open_issues": 19,
    "commits_90d": 140,
@@ -654,7 +570,7 @@
    "url": "https://github.com/exelban/stats",
    "description": "macOS system monitor in your menu bar",
    "breakdown": {
-    "stars_per": 43543,
+    "stars_per": 43544,
     "issues_per": 19.0
    },
    "base_score": 74.3,
@@ -696,34 +612,6 @@
    "research": false
   },
   {
-   "repo": "stoplightio/prism",
-   "score": 75.7,
-   "stars": 5072,
-   "forks": 415,
-   "open_issues": 124,
-   "commits_90d": 15,
-   "contributors_90d": 1,
-   "effective_contributors": 1.0,
-   "top_share": 1.0,
-   "capped": false,
-   "language": "TypeScript",
-   "url": "https://github.com/stoplightio/prism",
-   "description": "Turn any OpenAPI2/3 and Postman Collection file into an API server with mocking, transformations and validations.",
-   "breakdown": {
-    "stars_per": 5072,
-    "issues_per": 124.0
-   },
-   "base_score": 68.8,
-   "open_prs": 21,
-   "contributors_all": 112,
-   "merged_pr_authors": 1,
-   "outsider_pr_authors": 4,
-   "accept": 0.5,
-   "external_prs": 48,
-   "entry_issues": 15,
-   "research": false
-  },
-  {
    "repo": "AykutSarac/jsoncrack.com",
    "score": 75.6,
    "stars": 44603,
@@ -754,7 +642,7 @@
   {
    "repo": "lyswhut/lx-music-mobile",
    "score": 75.1,
-   "stars": 19490,
+   "stars": 19491,
    "forks": 2254,
    "open_issues": 807,
    "commits_90d": 14,
@@ -766,7 +654,7 @@
    "url": "https://github.com/lyswhut/lx-music-mobile",
    "description": "一个基于 React native 开发的音乐软件",
    "breakdown": {
-    "stars_per": 19490,
+    "stars_per": 19491,
     "issues_per": 807.0
    },
    "base_score": 77.3,
@@ -776,62 +664,6 @@
    "outsider_pr_authors": 6,
    "accept": 0.4691358024691358,
    "external_prs": 81,
-   "entry_issues": 1,
-   "research": false
-  },
-  {
-   "repo": "spacedriveapp/spacedrive",
-   "score": 75.0,
-   "stars": 39570,
-   "forks": 1381,
-   "open_issues": 30,
-   "commits_90d": 246,
-   "contributors_90d": 4,
-   "effective_contributors": 1.0,
-   "top_share": 0.98,
-   "capped": true,
-   "language": "Rust",
-   "url": "https://github.com/spacedriveapp/spacedrive",
-   "description": "Spacedrive is an open source cross-platform file explorer, powered by a virtual distributed filesystem written in Rust.",
-   "breakdown": {
-    "stars_per": 39570,
-    "issues_per": 30.0
-   },
-   "base_score": 75.0,
-   "open_prs": 38,
-   "contributors_all": 124,
-   "merged_pr_authors": 3,
-   "outsider_pr_authors": 5,
-   "accept": 0.7222222222222222,
-   "external_prs": 36,
-   "entry_issues": 0,
-   "research": false
-  },
-  {
-   "repo": "mksglu/context-mode",
-   "score": 75.0,
-   "stars": 34344,
-   "forks": 2359,
-   "open_issues": 19,
-   "commits_90d": 243,
-   "contributors_90d": 1,
-   "effective_contributors": 1.0,
-   "top_share": 1.0,
-   "capped": true,
-   "language": "JavaScript",
-   "url": "https://github.com/mksglu/context-mode",
-   "description": "Free, local plugin that keeps tool output out of your coding agent's context window. Sandbox and SQLite FTS5 search, 99% fewer bytes in context. Works with Claude Code, Codex, Pi, OMP, OpenCode, Gemin",
-   "breakdown": {
-    "stars_per": 34344,
-    "issues_per": 19.0
-   },
-   "base_score": 73.5,
-   "open_prs": null,
-   "contributors_all": 110,
-   "merged_pr_authors": 0,
-   "outsider_pr_authors": 0,
-   "accept": null,
-   "external_prs": 0,
    "entry_issues": 1,
    "research": false
   },
@@ -978,7 +810,7 @@
   {
    "repo": "ntdevlabs/tiny11builder",
    "score": 73.3,
-   "stars": 22379,
+   "stars": 22381,
    "forks": 1695,
    "open_issues": 37,
    "commits_90d": 10,
@@ -990,7 +822,7 @@
    "url": "https://github.com/ntdevlabs/tiny11builder",
    "description": "WinUI app for building smaller, customized Windows 11 images.",
    "breakdown": {
-    "stars_per": 22379,
+    "stars_per": 22381,
     "issues_per": 37.0
    },
    "base_score": 73.3,
@@ -1148,7 +980,7 @@
    "score": 71.5,
    "stars": 10784,
    "forks": 882,
-   "open_issues": 192,
+   "open_issues": 191,
    "commits_90d": 84,
    "contributors_90d": 2,
    "effective_contributors": 1.1,
@@ -1159,44 +991,16 @@
    "description": "Integrating ChatGPT into your browser deeply, everything you need is here",
    "breakdown": {
     "stars_per": 9804,
-    "issues_per": 174.5
+    "issues_per": 173.6
    },
    "base_score": 70.1,
-   "open_prs": 37,
+   "open_prs": 38,
    "contributors_all": 44,
    "merged_pr_authors": 2,
    "outsider_pr_authors": 4,
    "accept": 0.2608695652173913,
    "external_prs": 23,
    "entry_issues": 1,
-   "research": false
-  },
-  {
-   "repo": "elizaOS/eliza",
-   "score": 71.1,
-   "stars": 19910,
-   "forks": 5905,
-   "open_issues": 16,
-   "commits_90d": 100,
-   "contributors_90d": 1,
-   "effective_contributors": 1.0,
-   "top_share": 1.0,
-   "capped": true,
-   "language": "Java",
-   "url": "https://github.com/elizaOS/eliza",
-   "description": "Open source agentic operating system",
-   "breakdown": {
-    "stars_per": 19910,
-    "issues_per": 16.0
-   },
-   "base_score": 71.1,
-   "open_prs": 123,
-   "contributors_all": 1,
-   "merged_pr_authors": 2,
-   "outsider_pr_authors": 2,
-   "accept": null,
-   "external_prs": 3,
-   "entry_issues": 0,
    "research": false
   },
   {
@@ -1253,34 +1057,6 @@
    "accept": 0.8775510204081632,
    "external_prs": 196,
    "entry_issues": 0,
-   "research": false
-  },
-  {
-   "repo": "chartdb/chartdb",
-   "score": 71.0,
-   "stars": 23151,
-   "forks": 1529,
-   "open_issues": 114,
-   "commits_90d": 22,
-   "contributors_90d": 2,
-   "effective_contributors": 1.3,
-   "top_share": 0.86,
-   "capped": false,
-   "language": "TypeScript",
-   "url": "https://github.com/chartdb/chartdb",
-   "description": "Database diagrams editor that allows you to visualize and design your DB with a single query.",
-   "breakdown": {
-    "stars_per": 17808,
-    "issues_per": 87.7
-   },
-   "base_score": 67.0,
-   "open_prs": 42,
-   "contributors_all": 73,
-   "merged_pr_authors": 2,
-   "outsider_pr_authors": 2,
-   "accept": 0.8611111111111112,
-   "external_prs": 108,
-   "entry_issues": 3,
    "research": false
   },
   {
@@ -1368,6 +1144,34 @@
    "research": true
   },
   {
+   "repo": "elizaOS/eliza",
+   "score": 70.8,
+   "stars": 19910,
+   "forks": 5905,
+   "open_issues": 14,
+   "commits_90d": 100,
+   "contributors_90d": 1,
+   "effective_contributors": 1.0,
+   "top_share": 1.0,
+   "capped": true,
+   "language": "Java",
+   "url": "https://github.com/elizaOS/eliza",
+   "description": "Open source agentic operating system",
+   "breakdown": {
+    "stars_per": 19910,
+    "issues_per": 14.0
+   },
+   "base_score": 70.8,
+   "open_prs": 123,
+   "contributors_all": 1,
+   "merged_pr_authors": 2,
+   "outsider_pr_authors": 2,
+   "accept": null,
+   "external_prs": 3,
+   "entry_issues": 0,
+   "research": false
+  },
+  {
    "repo": "HyNetworks/hysteria",
    "score": 70.7,
    "stars": 22965,
@@ -1426,7 +1230,7 @@
   {
    "repo": "reconurge/flowsint",
    "score": 70.3,
-   "stars": 10229,
+   "stars": 10230,
    "forks": 1262,
    "open_issues": 41,
    "commits_90d": 90,
@@ -1438,7 +1242,7 @@
    "url": "https://github.com/reconurge/flowsint",
    "description": "A modern platform for visual, flexible, and extensible graph-based investigations. For cybersecurity analysts and investigators.",
    "breakdown": {
-    "stars_per": 10229,
+    "stars_per": 10230,
     "issues_per": 41.0
    },
    "base_score": 70.3,
@@ -1454,7 +1258,7 @@
   {
    "repo": "emilkowalski/skills",
    "score": 70.0,
-   "stars": 58466,
+   "stars": 58472,
    "forks": 3441,
    "open_issues": 3,
    "commits_90d": 19,
@@ -1466,7 +1270,7 @@
    "url": "https://github.com/emilkowalski/skills",
    "description": "Skills for Designers and Engineers.",
    "breakdown": {
-    "stars_per": 58466,
+    "stars_per": 58472,
     "issues_per": 3.0
    },
    "base_score": 70.0,
@@ -1594,7 +1398,7 @@
   {
    "repo": "brunodev85/winlator",
    "score": 69.6,
-   "stars": 20074,
+   "stars": 20076,
    "forks": 2017,
    "open_issues": 388,
    "commits_90d": 6,
@@ -1606,7 +1410,7 @@
    "url": "https://github.com/brunodev85/winlator",
    "description": "Android application for running Windows applications with Wine and Box86/Box64",
    "breakdown": {
-    "stars_per": 20074,
+    "stars_per": 20076,
     "issues_per": 388.0
    },
    "base_score": 76.6,
@@ -1818,7 +1622,7 @@
   {
    "repo": "emanuele-f/PCAPdroid",
    "score": 68.4,
-   "stars": 5229,
+   "stars": 5230,
    "forks": 591,
    "open_issues": 45,
    "commits_90d": 64,
@@ -1830,7 +1634,7 @@
    "url": "https://github.com/emanuele-f/PCAPdroid",
    "description": "No-root network monitor, firewall and PCAP dumper for Android",
    "breakdown": {
-    "stars_per": 4754,
+    "stars_per": 4755,
     "issues_per": 40.9
    },
    "base_score": 64.5,
@@ -1875,7 +1679,7 @@
    "repo": "realworld-apps/realworld",
    "score": 68.2,
    "stars": 84396,
-   "forks": 7682,
+   "forks": 7683,
    "open_issues": 25,
    "commits_90d": 12,
    "contributors_90d": 2,
@@ -1905,7 +1709,7 @@
    "stars": 5091,
    "forks": 335,
    "open_issues": 77,
-   "commits_90d": 125,
+   "commits_90d": 122,
    "contributors_90d": 1,
    "effective_contributors": 1.0,
    "top_share": 1.0,
@@ -1958,7 +1762,7 @@
   {
    "repo": "Ryze-AI-Adgent/open-seo-mcp-skills",
    "score": 67.8,
-   "stars": 10613,
+   "stars": 10611,
    "forks": 396,
    "open_issues": 4,
    "commits_90d": 16,
@@ -1970,7 +1774,7 @@
    "url": "https://github.com/Ryze-AI-Adgent/open-seo-mcp-skills",
    "description": "Free SEO MCP server + open-source SEO and GEO skills for Claude: keyword research, rank tracking, audits, backlinks, AI visibility on your real GSC/GA4/ads data. claude mcp add ryze --transport http h",
    "breakdown": {
-    "stars_per": 10613,
+    "stars_per": 10611,
     "issues_per": 4.0
    },
    "base_score": 64.6,
@@ -2852,34 +2656,6 @@
    "research": false
   },
   {
-   "repo": "openTrinity/mycontext",
-   "score": 64.5,
-   "stars": 5049,
-   "forks": 149,
-   "open_issues": 14,
-   "commits_90d": 5,
-   "contributors_90d": 1,
-   "effective_contributors": 1.0,
-   "top_share": 1.0,
-   "capped": false,
-   "language": "TypeScript",
-   "url": "https://github.com/openTrinity/mycontext",
-   "description": "MyContext is a local-first desktop app for everyday communication and knowledge work",
-   "breakdown": {
-    "stars_per": 5049,
-    "issues_per": 14.0
-   },
-   "base_score": 64.5,
-   "open_prs": 8,
-   "contributors_all": 8,
-   "merged_pr_authors": 0,
-   "outsider_pr_authors": 2,
-   "accept": null,
-   "external_prs": 2,
-   "entry_issues": 0,
-   "research": false
-  },
-  {
    "repo": "certd/certd",
    "score": 64.3,
    "stars": 5141,
@@ -2938,7 +2714,7 @@
   {
    "repo": "xifangczy/cat-catch",
    "score": 64.3,
-   "stars": 23076,
+   "stars": 23077,
    "forks": 2002,
    "open_issues": 578,
    "commits_90d": 61,
@@ -2950,7 +2726,7 @@
    "url": "https://github.com/xifangczy/cat-catch",
    "description": "猫抓 浏览器资源嗅探扩展 / cat-catch Browser Resource Sniffing Extension",
    "breakdown": {
-    "stars_per": 15384,
+    "stars_per": 15385,
     "issues_per": 385.3
    },
    "base_score": 64.3,
@@ -2997,7 +2773,7 @@
    "stars": 10663,
    "forks": 473,
    "open_issues": 118,
-   "commits_90d": 191,
+   "commits_90d": 192,
    "contributors_90d": 4,
    "effective_contributors": 1.0,
    "top_share": 0.98,
@@ -3022,7 +2798,7 @@
   {
    "repo": "mukul975/Anthropic-Cybersecurity-Skills",
    "score": 63.2,
-   "stars": 36471,
+   "stars": 36472,
    "forks": 4463,
    "open_issues": 33,
    "commits_90d": 16,
@@ -3034,7 +2810,7 @@
    "url": "https://github.com/mukul975/Anthropic-Cybersecurity-Skills",
    "description": "817 structured cybersecurity skills for AI agents · Mapped to 6 frameworks: MITRE ATT&CK, NIST CSF 2.0, MITRE ATLAS, D3FEND, NIST AI RMF & MITRE F3 (Fight Fraud) · agentskills.io standard · Works with",
    "breakdown": {
-    "stars_per": 33155,
+    "stars_per": 33156,
     "issues_per": 30.0
    },
    "base_score": 71.8,
@@ -3160,34 +2936,6 @@
    "research": false
   },
   {
-   "repo": "teableio/teable",
-   "score": 62.5,
-   "stars": 22006,
-   "forks": 1367,
-   "open_issues": 101,
-   "commits_90d": 19,
-   "contributors_90d": 1,
-   "effective_contributors": 1.0,
-   "top_share": 1.0,
-   "capped": false,
-   "language": "TypeScript",
-   "url": "https://github.com/teableio/teable",
-   "description": "✨ AI Spreadsheet for Business",
-   "breakdown": {
-    "stars_per": 22006,
-    "issues_per": 101.0
-   },
-   "base_score": 75.1,
-   "open_prs": 49,
-   "contributors_all": 43,
-   "merged_pr_authors": 1,
-   "outsider_pr_authors": 10,
-   "accept": 0.13471502590673576,
-   "external_prs": 193,
-   "entry_issues": 2,
-   "research": false
-  },
-  {
    "repo": "JCodesMore/ai-website-cloner-template",
    "score": 62.5,
    "stars": 39567,
@@ -3274,7 +3022,7 @@
   {
    "repo": "NanmiCoder/MediaCrawler",
    "score": 62.2,
-   "stars": 71497,
+   "stars": 71498,
    "forks": 13469,
    "open_issues": 169,
    "commits_90d": 45,
@@ -3286,7 +3034,7 @@
    "url": "https://github.com/NanmiCoder/MediaCrawler",
    "description": "小红书笔记 | 评论爬虫、抖音视频 | 评论爬虫、快手视频 | 评论爬虫、B 站视频 ｜ 评论爬虫、微博帖子 ｜ 评论爬虫、百度贴吧帖子 ｜ 百度贴吧评论回复爬虫  | 知乎问答文章｜评论爬虫",
    "breakdown": {
-    "stars_per": 51069,
+    "stars_per": 51070,
     "issues_per": 120.7
    },
    "base_score": 68.4,
@@ -3358,7 +3106,7 @@
   {
    "repo": "agalwood/Motrix",
    "score": 60.7,
-   "stars": 58595,
+   "stars": 58597,
    "forks": 5166,
    "open_issues": 152,
    "commits_90d": 278,
@@ -3370,7 +3118,7 @@
    "url": "https://github.com/agalwood/Motrix",
    "description": "A full-featured download manager.",
    "breakdown": {
-    "stars_per": 53268,
+    "stars_per": 53270,
     "issues_per": 138.2
    },
    "base_score": 75.9,
@@ -3582,7 +3330,7 @@
   {
    "repo": "garrytan/gstack",
    "score": 57.6,
-   "stars": 142226,
+   "stars": 142228,
    "forks": 20987,
    "open_issues": 86,
    "commits_90d": 222,
@@ -3594,7 +3342,7 @@
    "url": "https://github.com/garrytan/gstack",
    "description": "Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA",
    "breakdown": {
-    "stars_per": 142226,
+    "stars_per": 142228,
     "issues_per": 86.0
    },
    "base_score": 80.7,
@@ -3640,7 +3388,7 @@
    "score": 57.3,
    "stars": 11029,
    "forks": 995,
-   "open_issues": 70,
+   "open_issues": 69,
    "commits_90d": 300,
    "contributors_90d": 6,
    "effective_contributors": 1.1,
@@ -3651,10 +3399,10 @@
    "description": "Fast PlayStation 1 emulator for x86-64/AArch32/AArch64/RV64",
    "breakdown": {
     "stars_per": 10026,
-    "issues_per": 63.6
+    "issues_per": 62.7
    },
    "base_score": 68.7,
-   "open_prs": 2,
+   "open_prs": 3,
    "contributors_all": 143,
    "merged_pr_authors": 10,
    "outsider_pr_authors": 9,
@@ -3750,7 +3498,7 @@
   {
    "repo": "lyswhut/lx-music-desktop",
    "score": 55.9,
-   "stars": 55529,
+   "stars": 55530,
    "forks": 7139,
    "open_issues": 1283,
    "commits_90d": 19,
@@ -3860,11 +3608,39 @@
    "research": false
   },
   {
+   "repo": "tixl3d/tixl",
+   "score": 53.2,
+   "stars": 5196,
+   "forks": 287,
+   "open_issues": 152,
+   "commits_90d": 300,
+   "contributors_90d": 5,
+   "effective_contributors": 1.2,
+   "top_share": 0.9,
+   "capped": true,
+   "language": "C#",
+   "url": "https://github.com/tixl3d/tixl",
+   "description": "TiXL is an open source software to create realtime motion graphics.",
+   "breakdown": {
+    "stars_per": 4330,
+    "issues_per": 126.7
+   },
+   "base_score": 63.8,
+   "open_prs": 20,
+   "contributors_all": 52,
+   "merged_pr_authors": 10,
+   "outsider_pr_authors": 9,
+   "accept": 0.7105263157894737,
+   "external_prs": 76,
+   "entry_issues": 0,
+   "research": false
+  },
+  {
    "repo": "Ranchero-Software/NetNewsWire",
    "score": 52.9,
    "stars": 10550,
    "forks": 792,
-   "open_issues": 602,
+   "open_issues": 603,
    "commits_90d": 300,
    "contributors_90d": 4,
    "effective_contributors": 1.1,
@@ -3875,7 +3651,7 @@
    "description": "RSS reader for macOS and iOS.",
    "breakdown": {
     "stars_per": 9591,
-    "issues_per": 547.3
+    "issues_per": 548.2
    },
    "base_score": 71.4,
    "open_prs": 23,
@@ -3974,7 +3750,7 @@
   {
    "repo": "gkd-kit/gkd",
    "score": 51.0,
-   "stars": 45134,
+   "stars": 45136,
    "forks": 2145,
    "open_issues": 6,
    "commits_90d": 186,
@@ -3986,7 +3762,7 @@
    "url": "https://github.com/gkd-kit/gkd",
    "description": "基于无障碍，高级选择器，订阅规则的自定义屏幕点击安卓应用 | An Android APP with custom screen tapping based on Accessibility, Advanced Selectors, and Subscription Rules",
    "breakdown": {
-    "stars_per": 45134,
+    "stars_per": 45136,
     "issues_per": 6.0
    },
    "base_score": 71.4,
@@ -4024,34 +3800,6 @@
    "outsider_pr_authors": 14,
    "accept": 0.29347826086956524,
    "external_prs": 184,
-   "entry_issues": 0,
-   "research": false
-  },
-  {
-   "repo": "mountain-loop/yaak",
-   "score": 50.2,
-   "stars": 19528,
-   "forks": 866,
-   "open_issues": 6,
-   "commits_90d": 238,
-   "contributors_90d": 9,
-   "effective_contributors": 1.2,
-   "top_share": 0.91,
-   "capped": true,
-   "language": "Rust",
-   "url": "https://github.com/mountain-loop/yaak",
-   "description": "The most intuitive desktop API client. Organize and execute REST, GraphQL, WebSockets, Server Sent Events, and gRPC 🦬",
-   "breakdown": {
-    "stars_per": 16273,
-    "issues_per": 5.0
-   },
-   "base_score": 62.8,
-   "open_prs": 9,
-   "contributors_all": 82,
-   "merged_pr_authors": 10,
-   "outsider_pr_authors": 10,
-   "accept": 0.8125,
-   "external_prs": 16,
    "entry_issues": 0,
    "research": false
   },
@@ -4168,39 +3916,11 @@
    "research": false
   },
   {
-   "repo": "pqrs-org/Karabiner-Elements",
-   "score": 49.1,
-   "stars": 23131,
-   "forks": 966,
-   "open_issues": 27,
-   "commits_90d": 300,
-   "contributors_90d": 7,
-   "effective_contributors": 1.1,
-   "top_share": 0.96,
-   "capped": true,
-   "language": "C++",
-   "url": "https://github.com/pqrs-org/Karabiner-Elements",
-   "description": "Karabiner-Elements is a powerful tool for customizing keyboards on macOS",
-   "breakdown": {
-    "stars_per": 21028,
-    "issues_per": 24.5
-   },
-   "base_score": 69.8,
-   "open_prs": 0,
-   "contributors_all": 68,
-   "merged_pr_authors": 9,
-   "outsider_pr_authors": 14,
-   "accept": 0.6186440677966102,
-   "external_prs": 118,
-   "entry_issues": 1,
-   "research": false
-  },
-  {
    "repo": "Kruk2/jasna",
-   "score": 49.1,
-   "stars": 5271,
+   "score": 49.0,
+   "stars": 5272,
    "forks": 452,
-   "open_issues": 28,
+   "open_issues": 27,
    "commits_90d": 202,
    "contributors_90d": 1,
    "effective_contributors": 1.0,
@@ -4210,11 +3930,11 @@
    "url": "https://github.com/Kruk2/jasna",
    "description": "Video restoration tool",
    "breakdown": {
-    "stars_per": 5271,
-    "issues_per": 28.0
+    "stars_per": 5272,
+    "issues_per": 27.0
    },
-   "base_score": 66.3,
-   "open_prs": 0,
+   "base_score": 66.2,
+   "open_prs": 1,
    "contributors_all": 11,
    "merged_pr_authors": 2,
    "outsider_pr_authors": 12,
@@ -4338,7 +4058,7 @@
   {
    "repo": "GyulyVGC/sniffnet",
    "score": 46.9,
-   "stars": 43170,
+   "stars": 43171,
    "forks": 2024,
    "open_issues": 49,
    "commits_90d": 243,
@@ -4350,7 +4070,7 @@
    "url": "https://github.com/GyulyVGC/sniffnet",
    "description": "Comfortably monitor your network traffic 🕵️‍♂️",
    "breakdown": {
-    "stars_per": 35975,
+    "stars_per": 35976,
     "issues_per": 40.8
    },
    "base_score": 70.3,
@@ -4366,7 +4086,7 @@
   {
    "repo": "linshenkx/prompt-optimizer",
    "score": 46.6,
-   "stars": 42062,
+   "stars": 42064,
    "forks": 4734,
    "open_issues": 5,
    "commits_90d": 141,
@@ -4378,7 +4098,7 @@
    "url": "https://github.com/linshenkx/prompt-optimizer",
    "description": "An AI prompt optimizer for writing better prompts and getting better AI results.",
    "breakdown": {
-    "stars_per": 38238,
+    "stars_per": 38240,
     "issues_per": 4.5
    },
    "base_score": 67.6,
@@ -4562,7 +4282,7 @@
   {
    "repo": "colbymchenry/codegraph",
    "score": 42.1,
-   "stars": 78264,
+   "stars": 78267,
    "forks": 5204,
    "open_issues": 140,
    "commits_90d": 300,
@@ -4574,7 +4294,7 @@
    "url": "https://github.com/colbymchenry/codegraph",
    "description": "Pre-indexed code knowledge graph, auto syncs on code changes, for Claude Code, Codex, Gemini, Cursor, OpenCode, AntiGravity, Kiro, CoPilot, and Hermes Agent — fewer tokens, fewer tool calls, 100% loca",
    "breakdown": {
-    "stars_per": 65220,
+    "stars_per": 65222,
     "issues_per": 116.7
    },
    "base_score": 73.6,
@@ -4617,7 +4337,7 @@
   },
   {
    "repo": "Imbad0202/academic-research-skills",
-   "score": 41.8,
+   "score": 40.6,
    "stars": 57903,
    "forks": 4415,
    "open_issues": 43,
@@ -4635,11 +4355,11 @@
    },
    "base_score": 65.7,
    "open_prs": 9,
-   "contributors_all": 26,
-   "merged_pr_authors": 12,
-   "outsider_pr_authors": 18,
-   "accept": 0.6451612903225806,
-   "external_prs": 31,
+   "contributors_all": 27,
+   "merged_pr_authors": 13,
+   "outsider_pr_authors": 19,
+   "accept": 0.6666666666666666,
+   "external_prs": 33,
    "entry_issues": 0,
    "research": true
   },
@@ -4674,7 +4394,7 @@
   {
    "repo": "sxyazi/yazi",
    "score": 39.7,
-   "stars": 43548,
+   "stars": 43549,
    "forks": 1071,
    "open_issues": 58,
    "commits_90d": 63,
@@ -4686,7 +4406,7 @@
    "url": "https://github.com/sxyazi/yazi",
    "description": "💥 Blazing fast terminal file manager written in Rust, based on async I/O.",
    "breakdown": {
-    "stars_per": 39589,
+    "stars_per": 39590,
     "issues_per": 52.7
    },
    "base_score": 73.4,
@@ -4840,6 +4560,34 @@
    "research": false
   },
   {
+   "repo": "CVHub520/X-AnyLabeling",
+   "score": 35.9,
+   "stars": 11002,
+   "forks": 1219,
+   "open_issues": 3,
+   "commits_90d": 147,
+   "contributors_90d": 8,
+   "effective_contributors": 1.1,
+   "top_share": 0.94,
+   "capped": true,
+   "language": "Python",
+   "url": "https://github.com/CVHub520/X-AnyLabeling",
+   "description": "X-AnyLabeling: A lightweight, efficient, and unified cross-platform desktop application for annotating text, image, video, point cloud and multimodal data, combining versatile built-in tools with stat",
+   "breakdown": {
+    "stars_per": 10002,
+    "issues_per": 2.7
+   },
+   "base_score": 61.0,
+   "open_prs": 5,
+   "contributors_all": 61,
+   "merged_pr_authors": 7,
+   "outsider_pr_authors": 19,
+   "accept": 0.5466666666666666,
+   "external_prs": 150,
+   "entry_issues": 0,
+   "research": false
+  },
+  {
    "repo": "colinhacks/zod",
    "score": 35.3,
    "stars": 44375,
@@ -4870,8 +4618,8 @@
   {
    "repo": "asgeirtj/system_prompts_leaks",
    "score": 34.5,
-   "stars": 72251,
-   "forks": 11628,
+   "stars": 72252,
+   "forks": 11629,
    "open_issues": 11,
    "commits_90d": 237,
    "contributors_90d": 6,
@@ -4882,7 +4630,7 @@
    "url": "https://github.com/asgeirtj/system_prompts_leaks",
    "description": "Leaked system prompts of ChatGPT, Claude, Gemini and more. The hidden system prompt of every popular chatbot, in full, every version since May 2025. Also Anthropic Claude Code, OpenAI Codex, Google An",
    "breakdown": {
-    "stars_per": 72251,
+    "stars_per": 72252,
     "issues_per": 11.0
    },
    "base_score": 74.5,
@@ -4897,10 +4645,10 @@
   },
   {
    "repo": "preactjs/preact",
-   "score": 33.9,
+   "score": 34.0,
    "stars": 39011,
    "forks": 2564,
-   "open_issues": 17,
+   "open_issues": 19,
    "commits_90d": 285,
    "contributors_90d": 14,
    "effective_contributors": 1.2,
@@ -4911,15 +4659,15 @@
    "description": "⚛️ Fast 3kB React alternative with the same modern API. Components & Virtual DOM.",
    "breakdown": {
     "stars_per": 32509,
-    "issues_per": 14.2
+    "issues_per": 15.8
    },
-   "base_score": 67.8,
-   "open_prs": 29,
+   "base_score": 68.0,
+   "open_prs": 27,
    "contributors_all": 389,
    "merged_pr_authors": 16,
    "outsider_pr_authors": 25,
-   "accept": 0.48936170212765956,
-   "external_prs": 47,
+   "accept": 0.44,
+   "external_prs": 50,
    "entry_issues": 0,
    "research": false
   },
@@ -5066,7 +4814,7 @@
   {
    "repo": "freqtrade/freqtrade",
    "score": 28.8,
-   "stars": 57114,
+   "stars": 57115,
    "forks": 11788,
    "open_issues": 19,
    "commits_90d": 300,
@@ -5078,7 +4826,7 @@
    "url": "https://github.com/freqtrade/freqtrade",
    "description": "Free, open source crypto trading bot",
    "breakdown": {
-    "stars_per": 51922,
+    "stars_per": 51923,
     "issues_per": 17.3
    },
    "base_score": 72.0,
@@ -5094,7 +4842,7 @@
   {
    "repo": "Predidit/Kazumi",
    "score": 28.5,
-   "stars": 43332,
+   "stars": 43336,
    "forks": 1491,
    "open_issues": 639,
    "commits_90d": 187,
@@ -5106,7 +4854,7 @@
    "url": "https://github.com/Predidit/Kazumi",
    "description": "基于自定义规则的番剧采集APP，支持流媒体在线观看，支持弹幕，支持实时超分辨率。",
    "breakdown": {
-    "stars_per": 30951,
+    "stars_per": 30954,
     "issues_per": 456.4
    },
    "base_score": 68.6,
@@ -5178,7 +4926,7 @@
   {
    "repo": "dgtlmoon/changedetection.io",
    "score": 27.6,
-   "stars": 35930,
+   "stars": 35931,
    "forks": 2265,
    "open_issues": 332,
    "commits_90d": 249,
@@ -5190,7 +4938,7 @@
    "url": "https://github.com/dgtlmoon/changedetection.io",
    "description": "Best and simplest tool for website change detection, web page monitoring, and website change alerts. Perfect for tracking content changes, price drops, restock alerts, and website defacement monitorin",
    "breakdown": {
-    "stars_per": 23953,
+    "stars_per": 23954,
     "issues_per": 221.3
    },
    "base_score": 65.0,
@@ -5290,9 +5038,9 @@
   {
    "repo": "Nutlope/hallmark",
    "score": 24.5,
-   "stars": 58673,
+   "stars": 58677,
    "forks": 3196,
-   "open_issues": 29,
+   "open_issues": 28,
    "commits_90d": 147,
    "contributors_90d": 9,
    "effective_contributors": 1.4,
@@ -5302,11 +5050,11 @@
    "url": "https://github.com/Nutlope/hallmark",
    "description": "Anti-AI-slop design skill for Claude Code, Cursor, and Codex.",
    "breakdown": {
-    "stars_per": 41909,
-    "issues_per": 20.7
+    "stars_per": 41912,
+    "issues_per": 20.0
    },
    "base_score": 65.0,
-   "open_prs": 22,
+   "open_prs": 23,
    "contributors_all": 12,
    "merged_pr_authors": 8,
    "outsider_pr_authors": 38,
@@ -5318,7 +5066,7 @@
   {
    "repo": "juanfont/headscale",
    "score": 24.2,
-   "stars": 45935,
+   "stars": 45936,
    "forks": 2658,
    "open_issues": 58,
    "commits_90d": 283,
@@ -5344,37 +5092,37 @@
    "research": false
   },
   {
-   "repo": "binwiederhier/ntfy",
-   "score": 23.8,
-   "stars": 35667,
-   "forks": 1733,
-   "open_issues": 339,
-   "commits_90d": 217,
-   "contributors_90d": 20,
+   "repo": "Alishahryar1/free-claude-code",
+   "score": 21.9,
+   "stars": 72289,
+   "forks": 11192,
+   "open_issues": 325,
+   "commits_90d": 277,
+   "contributors_90d": 14,
    "effective_contributors": 1.2,
-   "top_share": 0.9,
+   "top_share": 0.92,
    "capped": true,
-   "language": "Go",
-   "url": "https://github.com/binwiederhier/ntfy",
-   "description": "Send push notifications to your phone or desktop using PUT/POST",
+   "language": "Python",
+   "url": "https://github.com/Alishahryar1/free-claude-code",
+   "description": "Use Claude Code, Codex, Antigravity, VSCode, Pi, and OpenCode (and 6 other harnesses) for free (1.3B+ free tokens) from your terminal, app, IDE, or phone, and now from the browser with native browser ",
    "breakdown": {
-    "stars_per": 29722,
-    "issues_per": 282.5
+    "stars_per": 60241,
+    "issues_per": 270.8
    },
-   "base_score": 72.5,
-   "open_prs": 49,
-   "contributors_all": 447,
-   "merged_pr_authors": 28,
-   "outsider_pr_authors": 46,
-   "accept": 0.56,
-   "external_prs": 50,
+   "base_score": 74.5,
+   "open_prs": 98,
+   "contributors_all": 57,
+   "merged_pr_authors": 10,
+   "outsider_pr_authors": 53,
+   "accept": 0.15384615384615385,
+   "external_prs": 65,
    "entry_issues": 0,
    "research": false
   },
   {
    "repo": "yetone/magpie",
    "score": 21.7,
-   "stars": 39570,
+   "stars": 39575,
    "forks": 3607,
    "open_issues": 4806,
    "commits_90d": 200,
@@ -5386,7 +5134,7 @@
    "url": "https://github.com/yetone/magpie",
    "description": "Every agent's model. One place. Codex on DeepSeek, Claude Code on Kimi, from the menu bar.",
    "breakdown": {
-    "stars_per": 35973,
+    "stars_per": 35977,
     "issues_per": 4369.1
    },
    "base_score": 78.2,
@@ -5396,34 +5144,6 @@
    "outsider_pr_authors": 57,
    "accept": 0.5303030303030303,
    "external_prs": 198,
-   "entry_issues": 0,
-   "research": false
-  },
-  {
-   "repo": "Alishahryar1/free-claude-code",
-   "score": 21.3,
-   "stars": 72283,
-   "forks": 11191,
-   "open_issues": 324,
-   "commits_90d": 276,
-   "contributors_90d": 14,
-   "effective_contributors": 1.2,
-   "top_share": 0.92,
-   "capped": true,
-   "language": "Python",
-   "url": "https://github.com/Alishahryar1/free-claude-code",
-   "description": "Use Claude Code, Codex, Antigravity, VSCode, Pi, and OpenCode (and 6 other harnesses) for free (1.3B+ free tokens) from your terminal, app, IDE, or phone, and now from the browser with native browser ",
-   "breakdown": {
-    "stars_per": 60236,
-    "issues_per": 270.0
-   },
-   "base_score": 74.5,
-   "open_prs": 99,
-   "contributors_all": 57,
-   "merged_pr_authors": 10,
-   "outsider_pr_authors": 55,
-   "accept": 0.14925373134328357,
-   "external_prs": 67,
    "entry_issues": 0,
    "research": false
   },
@@ -5458,7 +5178,7 @@
   {
    "repo": "opendatalab/MinerU",
    "score": 18.7,
-   "stars": 84073,
+   "stars": 84075,
    "forks": 6942,
    "open_issues": 11,
    "commits_90d": 300,
@@ -5470,7 +5190,7 @@
    "url": "https://github.com/opendatalab/MinerU",
    "description": "Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON for your Agentic workflows.",
    "breakdown": {
-    "stars_per": 76430,
+    "stars_per": 76432,
     "issues_per": 10.0
    },
    "base_score": 71.9,
@@ -5486,7 +5206,7 @@
   {
    "repo": "topjohnwu/Magisk",
    "score": 18.0,
-   "stars": 64158,
+   "stars": 64159,
    "forks": 19442,
    "open_issues": 43,
    "commits_90d": 214,
@@ -5498,7 +5218,7 @@
    "url": "https://github.com/topjohnwu/Magisk",
    "description": "The Magic Mask for Android",
    "breakdown": {
-    "stars_per": 49352,
+    "stars_per": 49353,
     "issues_per": 33.1
    },
    "base_score": 68.5,
@@ -5514,7 +5234,7 @@
   {
    "repo": "DeusData/codebase-memory-mcp",
    "score": 14.4,
-   "stars": 48949,
+   "stars": 48950,
    "forks": 4071,
    "open_issues": 510,
    "commits_90d": 300,
@@ -5526,7 +5246,7 @@
    "url": "https://github.com/DeusData/codebase-memory-mcp",
    "description": "Local code intelligence for developers and AI agents. Connect code, docs and infrastructure in a persistent graph, with CBM Lens, MCP tools, agent integrations and change-aware test selection.",
    "breakdown": {
-    "stars_per": 30593,
+    "stars_per": 30594,
     "issues_per": 318.8
    },
    "base_score": 64.1,
@@ -5564,6 +5284,34 @@
    "outsider_pr_authors": 108,
    "accept": 0.050761421319796954,
    "external_prs": 197,
+   "entry_issues": 0,
+   "research": false
+  },
+  {
+   "repo": "bggRGjQaUbCoE/PiliPlus",
+   "score": 10.0,
+   "stars": 21167,
+   "forks": 1672,
+   "open_issues": 514,
+   "commits_90d": 300,
+   "contributors_90d": 34,
+   "effective_contributors": 1.5,
+   "top_share": 0.81,
+   "capped": true,
+   "language": "Dart",
+   "url": "https://github.com/bggRGjQaUbCoE/PiliPlus",
+   "description": "PiliPlus",
+   "breakdown": {
+    "stars_per": 14111,
+    "issues_per": 342.7
+   },
+   "base_score": 63.9,
+   "open_prs": 55,
+   "contributors_all": 91,
+   "merged_pr_authors": 44,
+   "outsider_pr_authors": 113,
+   "accept": 0.35555555555555557,
+   "external_prs": 180,
    "entry_issues": 0,
    "research": false
   }
