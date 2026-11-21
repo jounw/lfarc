@@ -5,6 +5,7 @@ Finds GitHub repos that many people use but few people maintain (i.e. where your
 and ranks them with a score. Standard library only. Token: GITHUB_TOKEN env var or `gh auth login`.
 """
 import argparse
+import base64
 import json
 import math
 import os
@@ -19,7 +20,7 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 
 API = "https://api.github.com"
-SCORE_VERSION = 7  # Bump whenever the scoring formula or filters change (recorded in snapshots)
+SCORE_VERSION = 8  # Bump whenever the scoring formula or filters change (recorded in snapshots)
 
 
 def get_token():
@@ -158,6 +159,7 @@ CORP_ORGS = {
     "slackhq", "atlassian", "jetbrains", "github", "gitlab-org", "tesla", "samsung", "sony", "cloudflare",
     "unity-technologies", "epicgames", "huawei", "xiaomi", "tiktok", "alibaba-damo-academy", "qwenlm",
     "android", "androidx", "flutter", "angular", "tensorflow", "chromium", "dart-lang", "golang", "jax-ml", "kotlin",
+    "dcloudio", "uvdesk", "stoplightio", "spacedriveapp",
     "nationalsecurityagency", "nasa", "cisagov", "uswds", "18f",
 }
 PERSONAL_MAIL = {"gmail.com", "googlemail.com", "users.noreply.github.com", "outlook.com", "hotmail.com", "live.com",
@@ -282,6 +284,29 @@ def assess_owner(owner, owner_type, top_login):
             return out
         out["company"] = bool(company) and _norm(owner) in company
     return out
+
+
+COMMERCIAL = re.compile(r"(our|the) hosted version at|\bcloud version\b|hosted or managed service|book a demo|contact sales|"
+                        r"sales@|(we|i) (now )?offer (a )?paid|commercial licen[sc]e|enterprise (plan|licen[sc]e|customers)", re.I)
+
+
+def is_commercial_product(full_name, homepage):
+    """Does the README sell something? (heuristic; catches company products owned by a personal account)
+
+    True when the README advertises a hosted/cloud version, paid plans, sales contact or a commercial license, or
+    links to a pricing page on the project's own homepage domain. Phrases are kept narrow on purpose: a plain
+    "hosted version" is often just a demo, and a link to someone else's pricing page says nothing.
+    """
+    try:
+        readme = base64.b64decode(api(f"/repos/{full_name}/readme")["content"]).decode("utf-8", "ignore")
+    except (urllib.error.HTTPError, KeyError, ValueError):
+        return False
+    if COMMERCIAL.search(readme):
+        return True
+    domain = re.sub(r"^www\.", "", urllib.parse.urlparse(homepage or "").netloc.lower())
+    if domain and not domain.endswith("github.io"):
+        return bool(re.search(re.escape(domain) + r"/[\w/-]*pricing", readme, re.I))
+    return False
 
 
 RESEARCH_TOPICS = {"research", "science", "scientific-computing", "scientific-machine-learning", "arxiv", "paper",
@@ -534,6 +559,8 @@ def run(args):
     def stage2(r):
         x = enrich(r["repo"], r["_core"], since_iso, limits)
         owner = {"company": False, "academic": False} if x["reason"] else assess_owner(r["_owner"], r["_owner_type"], r["_top"])
+        if not x["reason"] and not owner["company"] and not args.include_closed:
+            owner["company"] = is_commercial_product(r["repo"], r["_homepage"])
         return x, owner
 
     with ThreadPoolExecutor(max_workers=8) as ex:

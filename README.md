@@ -81,6 +81,7 @@ Excluded:
 - Corporate, closed and crowded repos (`--include-closed` keeps them):
   - Owners on the known big-company / government list (`CORP_ORGS` in `lfarc.py`: microsoft, google, meta, aws, nvidia, openai, anthropics, android, NSA, ...). Add or edit entries in `lfarc.py`.
   - Organizations that look company-run (only orgs with a website): the org's name or description reads like a company (Inc, Labs, Ltd, GmbH, Solutions, ...; academic wording excluded), or the top committer's profile company contains the org name (for example company `@serverless` on `serverless/*`). GitHub hides `is_verified` from non-members, so verified-org checks are not used.
+  - Commercial products, including ones owned by a personal account: the README advertises a hosted/cloud version, paid plans, a sales contact or a commercial license, or links to a pricing page on the project's own domain.
   - Repos where 50%+ of recent commit authors share one company email domain (personal mail and universities excluded) with 2+ authors, i.e. company-driven projects.
   - Closed to outsiders: none of at least 5 outsider PRs merged, or 20+ closed PRs with fewer than two outsider authors.
   - PR backlog: more than `--max-open-prs` (default 50) open human PRs **and** more open than were merged in the window (a queue of three months or more). Bot PRs are not counted.
